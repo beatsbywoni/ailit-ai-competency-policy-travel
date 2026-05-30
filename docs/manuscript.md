@@ -314,7 +314,7 @@ The present author reports there are no competing interests to declare.
 
 ## Data availability
 
-A replication archive containing the analysis code, the 21 anchor sentences (12 UNESCO student, 5 UNESCO teacher, 4 OECD–European Commission) as a structured CSV, the 25-country adherence matrices, the six-module robustness battery outputs, and the cross-framework cluster identity tables is, during peer review, anonymously available at <https://anonymous.4open.science/r/AILIT_TRAVEL-XXXX/> (URL to be inserted after anonymous mirror is created). The archive will be deposited at Zenodo upon acceptance and assigned a permanent DOI. The original national policy documents on which the corpus is built are not redistributed; they are listed in Appendix A together with their source URLs and access dates, enabling other researchers to re-build the corpus from primary sources.
+A replication archive containing the analysis code, the 21 anchor sentences (12 UNESCO student, 5 UNESCO teacher, 4 OECD–European Commission) as a structured CSV, the 25-country adherence matrices, the six-module robustness battery outputs, and the cross-framework cluster identity tables is, during peer review, anonymously available at <https://anonymous.4open.science/r/ailit-ai-competency-policy-travel-E18B/>. The archive will be deposited at Zenodo upon acceptance and assigned a permanent DOI. The original national policy documents on which the corpus is built are not redistributed; they are listed in Appendix A together with their source URLs and access dates, enabling other researchers to re-build the corpus from primary sources.
 
 ## Acknowledgements
 
