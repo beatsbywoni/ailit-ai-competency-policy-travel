@@ -33,7 +33,7 @@ Third, even where such documents exist, the field of AI literacy itself is conce
 
 ## 1.3 Approach and research questions
 
-This article addresses that question through a computational text analysis of 25 national AI-in-education policy texts harvested in May 2026. The analytical strategy aligns every corpus sentence against the verbatim anchor sentences of three independent AI competency frameworks — UNESCO student (twelve anchors), UNESCO teacher (five anchors), and OECD–European Commission (four anchors) — using multilingual sentence embeddings, and then clusters the resulting country-level adherence distributions using Hellinger distance. The cross-framework design is deliberate: it asks whether any cluster structure recovered from the principal UNESCO student analysis is preserved when the analysis is re-run against the other two frameworks, and thereby distinguishes framework-invariant adoption signatures from artefacts of any single anchor space.
+This article addresses that question through a computational text analysis of 25 national AI-in-education policy texts harvested in May 2026. The analytical strategy aligns every corpus sentence against the verbatim anchor sentences of three AI competency frameworks issued by two international organisations (UNESCO and the OECD–European Commission) — the UNESCO student (twelve anchors), UNESCO teacher (five anchors), and OECD–European Commission (four anchors) frameworks — using multilingual sentence embeddings, and then clusters the resulting country-level adherence distributions using Hellinger distance. The cross-framework design is deliberate: it asks whether any cluster structure recovered from the principal UNESCO student analysis is preserved when the analysis is re-run against the other two frameworks, and thereby distinguishes framework-invariant alignment signatures from artefacts of any single anchor space.
 
 Four research questions structure the analysis. RQ1: What cluster structure emerges from Hellinger-distance clustering of the 25-country adherence matrix against the UNESCO Student Framework's twelve anchors? RQ2: Does this cluster structure replicate when the analysis is re-run against the UNESCO teacher and OECD–European Commission frameworks? RQ3: Does the cluster identity of any country survive a six-module robustness battery comprising inverse-corpus weighting, leave-one-out, bootstrap confidence intervals, uniform-cap sub-sampling, temporal cohort split, and discriminant validity? RQ4: How does the resulting pattern of cluster identity map onto diffusion-of-innovation typologies of national policy adoption?
 
@@ -81,7 +81,7 @@ A pre-registered hypothesis was developed during the pilot phase of the present 
 
 # 3. Methods
 
-This section describes the corpus construction, anchor extraction and validation, multilingual text pipeline, embedding and alignment procedure, adherence matrix construction, Hellinger-distance clustering, six-module robustness battery, cross-framework replication design, and reproducibility infrastructure. The analytical strategy was pre-specified in a planning document drafted in May 2026 (file `AILIT_TRAVEL_planning_v1.md` in the project repository); deviations from that plan, where they occur, are flagged in the corresponding subsection.
+This section describes the corpus construction, anchor extraction and validation, multilingual text pipeline, embedding and alignment procedure, adherence matrix construction, Hellinger-distance clustering, six-module robustness battery, cross-framework replication design, and reproducibility infrastructure. The analytical strategy was pre-specified in a planning document drafted in May 2026 and archived in the replication repository; deviations from that plan, where they occur, are flagged in the corresponding subsection.
 
 ## 3.1 Sampling frame and corpus selection
 
@@ -179,6 +179,37 @@ Aggregating the twelve student anchors into the four UNESCO aspects (human-centr
 
 The aggregation to four aspects therefore returns a distribution heavily skewed toward AI System Design, with three smaller groups (Human-Centred Mindset, Ethics of AI, AI Techniques and Applications) accounting for the remainder. This distribution does not, however, map directly onto the K = 2 cluster partition recovered by Hellinger clustering, which is reported in §4.5. Korea and Ireland — the two countries that constitute the deviating cluster in the principal analysis — are dominant on different aspects under the four-aspect aggregation (Korea on Techniques and Applications, Ireland on Human-Centred Mindset). The clustering analysis therefore identifies a structural similarity between Korea and Ireland that is not visible at the level of dominant-aspect classification, a point developed further in §4.5 and §5.
 
+**Table 1.** Country-level adherence shares (%) for the UNESCO AI Competency Framework for Students, aggregated to the four-aspect level (A1 Human-centred mindset = S01–S03; A2 Ethics of AI = S04–S06; A3 AI techniques and applications = S07–S09; A4 AI system design = S10–S12). The dominant aspect for each country is in **bold**. n indicates the number of aligned sentences. Two countries with n < 50 (UAE and Australia) are reported with an italicised flag and are excluded from the §4.5 clustering analysis. The full 25 × 12 anchor-level matrix is available in the replication archive.
+
+| ISO2 | Country | A1 HCM | A2 Ethics | A3 Tech | A4 SysDes | Dominant | n |
+|---|---|---:|---:|---:|---:|---|---:|
+| KR | Korea | 18.3 | 9.9 | **42.8** | 29.0 | A3 Tech | 3297 |
+| GB | United Kingdom | 28.4 | 14.4 | 11.9 | **45.3** | A4 SysDes | 687 |
+| SG | Singapore | 30.6 | 15.0 | 12.8 | **41.6** | A4 SysDes | 493 |
+| FI | Finland | 23.2 | **28.7** | 24.3 | 23.8 | A2 Ethics | 1656 |
+| US | United States | **32.5** | 17.2 | 21.0 | 29.3 | A1 HCM | 3211 |
+| CN | China | 15.2 | 5.4 | 18.9 | **60.5** | A4 SysDes | 387 |
+| JP | Japan | 36.5 | 12.2 | 13.5 | **37.8** | A4 SysDes | 751 |
+| DE | Germany | 29.7 | 9.7 | 9.5 | **51.2** | A4 SysDes | 684 |
+| FR | France | 32.2 | 10.5 | 6.3 | **51.0** | A4 SysDes | 1626 |
+| CA | Canada | 30.7 | 21.3 | 12.0 | **36.0** | A4 SysDes | 75 |
+| AU | Australia | **28.6** | 19.0 | 23.8 | 28.6 | A1 HCM | 42 *small-n* |
+| IL | Israel | 31.8 | 14.1 | 9.6 | **44.5** | A4 SysDes | 996 |
+| IN | India | 23.2 | 21.2 | 11.8 | **43.8** | A4 SysDes | 1718 |
+| EE | Estonia | 25.8 | 27.3 | 3.0 | **44.0** | A4 SysDes | 66 |
+| NO | Norway | 23.1 | 25.0 | 17.6 | **34.3** | A4 SysDes | 974 |
+| SE | Sweden | 16.6 | 9.9 | 27.8 | **45.7** | A4 SysDes | 385 |
+| NL | Netherlands | 24.7 | 14.9 | 12.5 | **47.9** | A4 SysDes | 934 |
+| IE | Ireland | **37.4** | 9.5 | 30.6 | 22.4 | A1 HCM | 1290 |
+| ES | Spain | 24.3 | 16.2 | 22.4 | **37.1** | A4 SysDes | 210 |
+| IT | Italy | 24.9 | 10.0 | 8.4 | **56.6** | A4 SysDes | 1066 |
+| AE | UAE | **85.7** | 14.3 | 0.0 | 0.0 | A1 HCM | 7 *small-n* |
+| SA | Saudi Arabia | 22.6 | 8.5 | 23.5 | **45.3** | A4 SysDes | 234 |
+| BR | Brazil | 31.6 | 24.2 | 4.2 | **40.0** | A4 SysDes | 694 |
+| MX | Mexico | **37.8** | 26.0 | 9.7 | 26.4 | A1 HCM | 1253 |
+| ZA | South Africa | **35.1** | 27.3 | 9.6 | 28.0 | A1 HCM | 1334 |
+
+
 
 ## 4.5 Cross-framework replication of the K = 2 deviating cluster
 
@@ -194,11 +225,73 @@ To test whether the K = 2 partition is an artefact of the student-framework conc
 
 Two observations distinguish the teacher-framework result from the student-framework result. First, the silhouette is higher despite the lower dimensionality (5 vs 12), indicating that the deviation–canonical separation is *more* clearly resolved when the anchor space is collapsed to the five teacher macro-aspects. Second, the United States joins the deviating cluster here: US loadings on T01 (human-centred mindset, 29.6 %) and T04 (AI pedagogy, 37.1 %) are substantially above the canonical means of 9.3 % and 22.7 % respectively. Korea and Ireland likewise load heavily on T04 AI pedagogy (KR 33.5 %, IE 49.6 %). The US documents — the 2020 NDAA Division E (NAI Act), the 2023 Office of Educational Technology AI report, the 2025 White House Executive Order on Advancing AI Education for American Youth, and the 2024 OET AI toolkit — adopt the human-agency and pedagogy-integration register that the teacher framework explicitly indexes, even though they do not exhibit the student-framework's S08 Application-skills emphasis. The shift in the deviating signal under the teacher framework — from the student-framework's "students applying AI tools" to the teacher framework's "teachers integrating AI into pedagogy" — is itself substantively informative: it indicates that the same set of national policy texts contains both student-facing and teacher-facing variants of the same underlying *pedagogy-of-AI* orientation, which the cross-framework design surfaces.
 
+**Table 2.** Country-level adherence shares (%) for the UNESCO AI Competency Framework for Teachers (T01 Human-centred mindset, T02 Ethics of AI, T03 AI foundations and applications, T04 AI pedagogy, T05 AI for professional development). The dominant anchor for each country is in **bold**. n indicates the number of aligned sentences. Three countries with n < 50 (UAE, Australia, Estonia) are reported with an italicised flag and are excluded from the §4.5 clustering analysis.
+
+| ISO2 | Country | T01 HCM | T02 Ethics | T03 Found | T04 Pedagogy | T05 Prof Dev | Dominant | n |
+|---|---|---:|---:|---:|---:|---:|---|---:|
+| KR | Korea | **51.3** | 0.5 | 1.9 | 33.5 | 12.8 | T01 HCM | 2965 |
+| GB | United Kingdom | 6.5 | 12.8 | 12.0 | 22.2 | **46.5** | T05 Prof Dev | 585 |
+| SG | Singapore | 8.2 | 12.0 | 11.2 | 15.1 | **53.6** | T05 Prof Dev | 392 |
+| FI | Finland | 22.1 | 16.8 | 13.3 | **25.2** | 22.5 | T04 Pedagogy | 1176 |
+| US | United States | 29.6 | 8.9 | 7.2 | **37.1** | 17.2 | T04 Pedagogy | 2543 |
+| CN | China | 5.0 | 4.6 | 19.8 | 10.2 | **60.4** | T05 Prof Dev | 323 |
+| JP | Japan | 14.9 | 12.2 | 15.5 | 20.1 | **37.3** | T05 Prof Dev | 592 |
+| DE | Germany | 10.5 | 8.5 | 11.2 | 25.4 | **44.3** | T05 Prof Dev | 562 |
+| FR | France | 8.6 | 8.2 | 12.6 | 19.1 | **51.5** | T05 Prof Dev | 1286 |
+| CA | Canada | 12.3 | 13.7 | 6.8 | 28.8 | **38.4** | T05 Prof Dev | 73 |
+| AU | Australia | 12.8 | 7.7 | 23.1 | **41.0** | 15.4 | T04 Pedagogy | 39 *small-n* |
+| IL | Israel | 6.1 | 19.1 | 13.0 | 20.8 | **41.1** | T05 Prof Dev | 708 |
+| IN | India | 5.1 | 19.6 | 15.8 | 19.3 | **40.3** | T05 Prof Dev | 1161 |
+| EE | Estonia | 4.1 | 26.5 | 8.2 | **32.6** | 28.6 | T04 Pedagogy | 49 *small-n* |
+| NO | Norway | 8.5 | 20.6 | 11.2 | 22.5 | **37.3** | T05 Prof Dev | 574 |
+| SE | Sweden | 11.0 | 9.4 | 17.3 | **31.8** | 30.5 | T04 Pedagogy | 318 |
+| NL | Netherlands | 7.3 | 16.7 | 14.5 | 23.0 | **38.5** | T05 Prof Dev | 730 |
+| IE | Ireland | 14.1 | 5.7 | 8.8 | **49.6** | 21.8 | T04 Pedagogy | 1083 |
+| ES | Spain | 13.6 | 9.6 | 13.0 | 14.1 | **49.7** | T05 Prof Dev | 177 |
+| IT | Italy | 12.1 | 5.9 | 13.4 | 22.1 | **46.4** | T05 Prof Dev | 791 |
+| AE | UAE | 20.0 | 20.0 | 0.0 | **40.0** | 20.0 | T04 Pedagogy | 5 *small-n* |
+| SA | Saudi Arabia | 3.1 | 5.6 | 18.4 | 9.7 | **63.3** | T05 Prof Dev | 196 |
+| BR | Brazil | 14.2 | **29.8** | 16.5 | 21.2 | 18.4 | T02 Ethics | 430 |
+| MX | Mexico | 20.9 | 18.9 | 10.7 | 23.5 | **26.0** | T05 Prof Dev | 774 |
+| ZA | South Africa | 13.2 | **28.1** | 11.0 | 19.8 | 28.0 | T02 Ethics | 926 |
+
+
 ### 4.5.3 Replication on the OECD AILit framework
 
 The same procedure on the four OECD AILit anchors (O01 engaging with AI, O02 creating AI, O03 managing AI, O04 designing AI) yields a K = 2 silhouette of 0.483 on 23 eligible countries — the highest of the three frameworks, again despite the lowest anchor count. The deviating cluster expands to `{KR, FI, US, CA, SE, IE}`, all of which load above 33 % on O04 (designing AI). KR's O04 share is 43.4 %, FI's is 37.6 %, US's is 54.7 %, CA's is 41.2 %, SE's is 33.8 %, and IE's is 69.0 % (Table 3). The canonical-cluster mean on O04 is 24.0 %.
 
 The expansion of the deviating cluster from 2 → 3 → 6 countries as anchor dimensionality decreases (12 → 5 → 4) is informative, but it must be interpreted with conceptual care. The deviating signal under each framework attaches to a different macro-concept: S08 (Application skills — students *using* AI tools) under the student framework, T04 (AI pedagogy — teachers *integrating* AI) under the teacher framework, and O04 (Designing AI — learners and educators *creating* AI systems) under the OECD framework. The student-framework S08 anchor and the OECD-framework O04 anchor sit at conceptually distinct points on a use→create continuum, and a reader could reasonably ask whether the "framework-invariant deviating cluster" claim conflates concepts. The framework-invariance claim, made carefully, is that two countries — Korea and Ireland — fall in the deviating cluster of *every* framework, which is robust regardless of how the macro-concepts relate to one another. The expansion from `{KR, IE}` to `{KR, US, IE}` to `{KR, FI, US, CA, SE, IE}` is framework-specific and reflects different macro-categories of *pedagogy-of-AI* (student use; teacher integration; system design) that some countries exhibit only at some levels of resolution. The minimal-overlap set — Korea and Ireland — is the stable framework-invariant finding; the expanded sets are framework-specific findings about distinct conceptual deviations.
+
+**Table 3.** Country-level adherence shares (%) for the OECD–European Commission AI Literacy Framework (O01 Engaging with AI, O02 Creating AI, O03 Managing AI, O04 Designing AI). The dominant domain for each country is in **bold**. n indicates the number of aligned sentences. Two countries with n < 50 (UAE and Australia) are reported with an italicised flag and are excluded from the §4.5 clustering analysis.
+
+| ISO2 | Country | O01 Engaging | O02 Creating | O03 Managing | O04 Designing | Dominant | n |
+|---|---|---:|---:|---:|---:|---|---:|
+| KR | Korea | 35.0 | 7.4 | 14.2 | **43.4** | O04 Designing | 2918 |
+| GB | United Kingdom | 20.4 | 22.7 | **30.6** | 26.3 | O03 Managing | 594 |
+| SG | Singapore | 29.2 | 22.5 | **37.1** | 11.2 | O03 Managing | 418 |
+| FI | Finland | 32.1 | 16.8 | 13.5 | **37.6** | O04 Designing | 1270 |
+| US | United States | 24.2 | 4.7 | 16.3 | **54.7** | O04 Designing | 2553 |
+| CN | China | 16.7 | 20.1 | **41.0** | 22.3 | O03 Managing | 359 |
+| JP | Japan | 29.8 | 15.7 | **37.7** | 16.9 | O03 Managing | 605 |
+| DE | Germany | 25.0 | 9.0 | 31.8 | **34.3** | O04 Designing | 569 |
+| FR | France | 28.8 | 14.5 | **34.1** | 22.7 | O03 Managing | 1315 |
+| CA | Canada | 27.9 | 20.6 | 10.3 | **41.2** | O04 Designing | 68 |
+| AU | Australia | 6.2 | 12.5 | 9.4 | **71.9** | O04 Designing | 32 *small-n* |
+| IL | Israel | 19.5 | 19.2 | **32.9** | 28.4 | O03 Managing | 750 |
+| IN | India | 26.6 | 23.2 | **30.8** | 19.4 | O03 Managing | 1242 |
+| EE | Estonia | 30.2 | 9.4 | **56.6** | 3.8 | O03 Managing | 53 |
+| NO | Norway | 29.1 | 11.7 | 27.3 | **31.9** | O04 Designing | 642 |
+| SE | Sweden | **36.8** | 10.9 | 18.5 | 33.8 | O01 Engaging | 340 |
+| NL | Netherlands | 28.6 | 13.3 | **35.2** | 23.0 | O03 Managing | 753 |
+| IE | Ireland | 19.8 | 3.0 | 8.2 | **69.0** | O04 Designing | 859 |
+| ES | Spain | 15.4 | 17.2 | **52.7** | 14.8 | O03 Managing | 169 |
+| IT | Italy | 14.5 | 21.0 | **42.4** | 22.1 | O03 Managing | 896 |
+| AE | UAE | 16.7 | 0.0 | **66.7** | 16.7 | O03 Managing | 6 *small-n* |
+| SA | Saudi Arabia | 24.3 | 12.4 | **48.5** | 14.8 | O03 Managing | 202 |
+| BR | Brazil | 17.9 | 14.0 | **43.4** | 24.8 | O03 Managing | 493 |
+| MX | Mexico | 26.2 | 14.2 | **32.4** | 27.2 | O03 Managing | 822 |
+| ZA | South Africa | 22.5 | 14.8 | 31.0 | **31.7** | O04 Designing | 944 |
+
 
 ### 4.5.4 Cross-framework cluster identity and replication score
 
@@ -208,6 +301,37 @@ The score-3 row contains Korea and Ireland only. The score-2 row contains the Un
 
 Framework-pair agreement on cluster identity is 91 % (student ↔ teacher), 74 % (student ↔ OECD), and 74 % (teacher ↔ OECD), all computed on the 23 country pairs eligible in both frameworks of each comparison. The student framework partition is therefore essentially identical to the teacher framework partition with US flipped; the OECD partition adds four countries (US, FI, CA, SE) to the deviating cluster relative to the student partition. The minimal-overlap set across all three frameworks — the countries that are Cluster 1 in every framework — contains exactly Korea and Ireland.
 
+**Table 4.** Cross-framework cluster identity per country under the K = 2 partition for each anchor framework. ★ = Cluster 1 (the deviating cluster containing Korea and Ireland under the principal UNESCO student analysis); · = Cluster 2 (the canonical cluster); — = country excluded by the n ≥ 50 filter for that framework. The rep_score column counts the number of frameworks (out of three) in which the country is assigned to Cluster 1. Countries are reported in their original ISO order.
+
+| ISO2 | Country | UNESCO Student | UNESCO Teacher | OECD–EC | rep_score | Note |
+|---|---|:---:|:---:|:---:|:---:|---|
+| KR | Korea | ★ (deviating) | ★ (deviating) | ★ (deviating) | 3 | anchor of cluster |
+| GB | United Kingdom | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| SG | Singapore | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| FI | Finland | · (canonical) | · (canonical) | ★ (deviating) | 1 |  |
+| US | United States | · (canonical) | ★ (deviating) | ★ (deviating) | 2 | REPLICATES deviating signature |
+| CN | China | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| JP | Japan | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| DE | Germany | · (canonical) | · (canonical) | ★ (deviating) | 1 |  |
+| FR | France | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| CA | Canada | · (canonical) | · (canonical) | ★ (deviating) | 1 |  |
+| AU | Australia | — (excluded) | — (excluded) | — (excluded) | 0 | all small-n |
+| IL | Israel | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| IN | India | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| EE | Estonia | · (canonical) | — (excluded) | · (canonical) | 0 |  |
+| NO | Norway | · (canonical) | · (canonical) | ★ (deviating) | 1 |  |
+| SE | Sweden | · (canonical) | · (canonical) | ★ (deviating) | 1 |  |
+| NL | Netherlands | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| IE | Ireland | ★ (deviating) | ★ (deviating) | ★ (deviating) | 3 | anchor of cluster |
+| ES | Spain | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| IT | Italy | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| AE | UAE | — (excluded) | — (excluded) | — (excluded) | 0 | all small-n |
+| SA | Saudi Arabia | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| BR | Brazil | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| MX | Mexico | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+| ZA | South Africa | · (canonical) | · (canonical) | · (canonical) | 0 |  |
+
+
 
 *[Figure 1 about here]*
 
@@ -215,12 +339,20 @@ Framework-pair agreement on cluster identity is 91 % (student ↔ teacher), 74 %
 
 The §4.5 main result is therefore that the K = 2 cluster partition — and specifically the placement of Korea and Ireland in the deviating cluster — is **not** an artefact of which AI competency framework's vocabulary is used as the anchor space. The partition replicates across three frameworks developed by two international organisations (UNESCO, which authored the student and teacher frameworks through the same lead authors Miao and Shiohira; and the OECD–European Commission, which authored the third framework independently). The cross-framework design therefore tests robustness across two organisations rather than three; the high student-↔-teacher agreement (91 %) is partly attributable to shared authorship, while the lower student-↔-OECD and teacher-↔-OECD agreements (74 % each) are the more conservative tests of framework independence. The silhouette quality of the partition *improves* under the simpler frameworks. Korea and Ireland are the only two countries whose national AI-in-education policy texts align with the deviating signature under every framework tested.
 
+![**Figure 1.** Hellinger-distance dendrograms (Ward linkage) for the three anchor frameworks (top: UNESCO student, 12 anchors; middle: UNESCO teacher, 5 anchors; bottom: OECD–European Commission, 4 anchors), with the K = 2 cut highlighted in red, and (right panel) a cross-framework cluster-identity heatmap in which a darker cell marks Cluster 1 (deviating) assignment for that country under that framework. Korea and Ireland are the only two countries assigned to Cluster 1 under all three frameworks; the United States is assigned to Cluster 1 under the UNESCO teacher framework only; Finland, Canada, and Sweden join under the OECD framework.](figures/figure_1_cross_framework.png){width="100%"}
+
+
+
 This finding licenses a stronger §5 reading than would be available under any single-framework analysis: the Tool-use deviation is a property of the policy text rather than of the anchor system, and the §4.6 robustness battery (Module 1 inverse-corpus weighting, Module 2 leave-one-out, Module 3 bootstrap CIs, Module 4 uniform-cap sub-sampling, Module 5 temporal cohort split, Module 6 off-domain and hard-negative discriminant validity) establishes that the partition is also not an artefact of (i) corpus-size imbalance, (ii) single-document dominance, (iii) statistical sampling, (iv) within-country document weighting, (v) timing relative to the UNESCO framework's publication, or (vi) generic AI-policy concept vocabulary.
 
 
 ## 4.6 Robustness battery
 
 The six pre-specified robustness modules described in §3.8 are summarised below. Figure 2 displays a forest-plot summary of Modules 1–5 for Korea and Ireland under the version-two student anchors; full per-country results for each module are reported in Appendix C.
+
+![**Figure 2.** Forest-plot summary of robustness Modules 1–5 for Korea and Ireland under the version-two UNESCO student anchors. For each module, point estimates and (where applicable) 95% confidence intervals are shown for the focal-anchor share (S08 Application skills) for Korea and Ireland against the canonical-cluster mean. All confidence intervals exclude zero by more than 17 percentage points; the cluster identity of Korea and Ireland is preserved under every robustness module reported here. Full per-country results for all six modules are reported in Appendix C.](figures/figure_2_robustness.png){width="90%"}
+
+
 
 *Module 1 — Inverse-corpus weighting.* Under document-equal weighting, Korea's Tool-use to Ethics ratio increases from 4.31 to 6.78, reflecting the higher AILIT-S08 share in the four smaller Korean documents relative to the dominant KR-02. Ireland's ratio decreases from 3.21 to 2.50; in the full 25-country sample IE ranks fifth on the weighted ratio (KR 6.78 > SA 5.67 > AU 3.63 > CN 3.48 > IE 2.50), but among the two countries in the deviating cluster IE remains the lower of the two, well above the canonical-cluster mean. Five of 25 countries flip dominant aspect under weighting, all at the Human-Centred Mindset / AI System Design boundary; no country flips into or out of the Korea–Ireland deviating cluster.
 
@@ -230,7 +362,7 @@ The six pre-specified robustness modules described in §3.8 are summarised below
 
 *Module 4 — Uniform-cap sub-sampling.* Capping every country at *N* = 500 randomly-sampled aligned sentences per iteration (1,000 iterations) preserves Korea's deviating-cluster assignment in 100.0% of resamples and Ireland's deviating-cluster assignment in 100.0% of resamples. The full-data K = 2 partition is recovered in 99.9% of resamples under version-two anchors and 95.9% under version-one anchors, with the version-one discrepancy attributable to the United Arab Emirates' small-corpus flip into the deviating cluster in approximately 4% of iterations.
 
-*Module 5 — Temporal cohort split.* Partitioning the corpus into pre-September 2024 and post-September 2024 sub-corpora and recomputing cluster assignments separately within each cohort returns Korea in the deviating cluster in both cohorts and Ireland in the deviating cluster in both cohorts. Seven of the nine countries with sufficient sample size in both cohorts retain their principal-analysis cluster assignment; Germany and the United States shift from canonical to deviating in the post-2024 cohort, a finding consistent with temporal convergence toward the Korea–Ireland register that is developed in §5.
+*Module 5 — Temporal cohort split.* Partitioning the corpus into pre-September 2024 and post-September 2024 sub-corpora and recomputing cluster assignments separately within each cohort returns Korea in the deviating cluster in both cohorts and Ireland in the deviating cluster in both cohorts. (Within the post-2024 cohort, IE-02 — the 2025 *Guidance on Artificial Intelligence in Schools* — carries Ireland's signal into the deviating cluster; this is consistent with the Module 2 LOO finding that, *evaluated against the full 25-country population*, IE-02 alone falls in the canonical cluster, because the cohort-population partition and the full-population partition use different cluster populations and therefore different centroid positions.) Seven of the nine countries with sufficient sample size in both cohorts retain their principal-analysis cluster assignment; Germany and the United States shift from canonical to deviating in the post-2024 cohort, a finding consistent with temporal convergence toward the Korea–Ireland register that is developed in §5.
 
 *Module 6 — Discriminant validity.* The off-domain negative corpus (3,271 sentences from F. Scott Fitzgerald's *The Great Gatsby*, the English-language Wikipedia featured articles on World War I and Photosynthesis) aligned at 0.0% under version-two anchors, demonstrating that the 12-anchor system does not fire on generic English prose. The hard-negative corpus (328 sentences from three extracted corporate and government AI policy documents — the US Department of Defense AI Ethical Principles release, the Google AI Principles, and the Microsoft Responsible AI Standard v2) aligned at 68.9%, marginally above the 66.8% positive-corpus rate. Of the four intended hard-negative documents, only the WHO health-AI ethics PDF failed automated text extraction; the DoD release was successfully extracted but yielded only two sentences, so the substantive hard-negative signal comes from the 326 Google and Microsoft sentences. The hard-negative result reflects substantial conceptual overlap between corporate AI policy text and the anchor concept space. The anchors should therefore be interpreted as measuring AI-policy concept alignment rather than education-AI-specific concept alignment, an interpretive constraint discussed in §5.6 and §6.
 
@@ -407,29 +539,5 @@ Yim, I. H. Y., & Su, J. (2024). Artificial intelligence (AI) learning tools in K
 Zhai, X., Chu, X., Chai, C. S., Jong, M. S. Y., Istenic, A., Spector, M., Liu, J.-B., Yuan, J., & Li, Y. (2021). A review of artificial intelligence (AI) in education from 2010 to 2020. *Complexity*, *2021*, Article 8812542. https://doi.org/10.1155/2021/8812542
 
 Zhang, K., & Aslan, A. B. (2021). AI technologies for education: Recent research & future directions. *Computers and Education: Artificial Intelligence*, *2*, Article 100025. https://doi.org/10.1016/j.caeai.2021.100025
-
-Butterfuss, R., & Doran, P. R. (2025). Using sentence-level embeddings to align large-scale assessment items to content standards. *Educational Measurement: Issues and Practice*. Advance online publication. https://doi.org/10.1111/emip.12641
-
-Casal-Otero, L., Catala, A., Fernández-Morante, C., Taboada, M., Cebreiro, B., & Barro, S. (2023). AI literacy in K–12: A systematic literature review. *International Journal of STEM Education*, *10*(1), Article 29. https://doi.org/10.1186/s40594-023-00418-7
-
-DiMaggio, P. J., & Powell, W. W. (1983). The iron cage revisited: Institutional isomorphism and collective rationality in organizational fields. *American Sociological Review*, *48*(2), 147–160. https://doi.org/10.2307/2095101
-
-Lee, S., Yoo, S., Choi, J., Park, M., Kim, H., & Lim, C. (2025). Tracing the lifecycle of an EdTech policy assemblage: An Actor Network Theory account of South Korea's AI Digital Textbook initiative. *Postdigital Science and Education*. Advance online publication. https://doi.org/10.1007/s42438-025-00614-4
-
-Long, D., & Magerko, B. (2020). What is AI literacy? Competencies and design considerations. In *Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems* (pp. 1–16). Association for Computing Machinery. https://doi.org/10.1145/3313831.3376727
-
-Miao, F., & Shiohira, K. (2024a). *AI competency framework for students*. United Nations Educational, Scientific and Cultural Organization. https://unesdoc.unesco.org/ark:/48223/pf0000391105
-
-Miao, F., & Shiohira, K. (2024b). *AI competency framework for teachers*. United Nations Educational, Scientific and Cultural Organization. https://unesdoc.unesco.org/ark:/48223/pf0000391104
-
-Ng, D. T. K., Leung, J. K. L., Chu, S. K. W., & Qiao, M. S. (2021). Conceptualizing AI literacy: An exploratory review. *Computers and Education: Artificial Intelligence*, *2*, Article 100041. https://doi.org/10.1016/j.caeai.2021.100041
-
-OECD & European Commission. (2025). *Empowering learners for the age of AI: An AI literacy framework for primary and secondary education* (Review draft, May 2025). https://ailiteracyframework.org/AILitFramework_ReviewDraft.pdf
-
-Reimers, N., & Gurevych, I. (2019). Sentence-BERT: Sentence embeddings using Siamese BERT-networks. In K. Inui, J. Jiang, V. Ng, & X. Wan (Eds.), *Proceedings of the 2019 Conference on Empirical Methods in Natural Language Processing and the 9th International Joint Conference on Natural Language Processing (EMNLP-IJCNLP)* (pp. 3982–3992). Association for Computational Linguistics. https://doi.org/10.18653/v1/D19-1410
-
-Rogers, E. M. (2003). *Diffusion of innovations* (5th ed.). Free Press.
-
-Schiff, D. (2022). Education for AI, not AI for education: The role of education and ethics in national AI policy strategies. *International Journal of Artificial Intelligence in Education*, *32*(3), 527–563. https://doi.org/10.1007/s40593-021-00270-2
 
 ---
