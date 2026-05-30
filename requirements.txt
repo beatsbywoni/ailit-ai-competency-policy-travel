@@ -1,0 +1,37 @@
+# Inherited from Paper C (inee-minimum-standards-2024-policy-alignment)
+# Pinned at submission; loose pins during Sprint 0.
+
+# Core ML / embedding
+sentence-transformers>=2.7.0
+torch>=2.2.0
+transformers>=4.40.0
+numpy>=1.26.0
+scipy>=1.12.0
+scikit-learn>=1.4.0
+
+# Text processing
+pdfminer.six>=20240706
+pypdf>=4.0.0
+trafilatura>=1.9.0
+lxml>=5.0.0
+beautifulsoup4>=4.12.0
+python-docx>=1.1.0  # for AU-01-style .docx files served by some publishers
+
+# Multilingual segmentation
+pysbd>=0.3.4
+
+# Analysis
+pandas>=2.2.0
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Robustness
+statsmodels>=0.14.0
+
+# Notebook / dev
+jupyter>=1.0.0
+ipykernel>=6.29.0
+ruff>=0.4.0
+
+# Optional: Korean tokenisation sanity-check
+# kiwipiepy>=0.17.0

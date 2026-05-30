@@ -1,0 +1,26 @@
+iso,pre_n,pre_cluster,post_n,post_cluster,full_cluster,note
+AE,2,-,5,-,2,pre n=2<50; post n=5<50
+AU,38,-,6,-,2,pre n=38<50; post n=6<50
+BR,564,2,150,2,2,agree
+CA,31,-,44,-,2,pre n=31<50; post n=44<50
+CN,390,2,0,-,2,post n=0<50
+DE,518,2,173,1,2,DISAGREE
+EE,3,-,64,2,2,pre n=3<50
+ES,65,2,147,2,2,agree
+FI,1644,2,35,-,2,post n=35<50
+FR,274,2,1372,2,2,agree
+GB,687,2,8,-,2,post n=8<50
+IE,854,1,458,1,1,agree
+IL,120,2,895,2,2,agree
+IN,1763,2,0,-,2,post n=0<50
+IT,0,-,1080,2,2,pre n=0<50
+JP,544,2,225,2,2,agree
+KR,3168,1,275,1,1,agree
+MX,1311,2,0,-,2,post n=0<50
+NL,952,2,0,-,2,post n=0<50
+NO,1031,2,7,-,2,post n=7<50
+SA,248,2,0,-,2,post n=0<50
+SE,388,2,0,-,2,post n=0<50
+SG,489,2,13,-,2,post n=13<50
+US,1614,2,1628,1,2,DISAGREE
+ZA,0,-,1362,2,2,pre n=0<50

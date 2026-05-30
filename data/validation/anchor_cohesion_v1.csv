@@ -1,0 +1,22 @@
+anchor_id,framework,group,mean_within_group,mean_between_group,cohesion_ratio,worst_cross_group_match,worst_cross_group_score,flag
+AILIT-S01,UNESCO-student,Human-centred mindset,0.8889,0.7743,1.148,AILIT-S04,0.8453,
+AILIT-S02,UNESCO-student,Human-centred mindset,0.8759,0.737,1.188,AILIT-S06,0.7869,
+AILIT-S03,UNESCO-student,Human-centred mindset,0.865,0.8038,1.076,AILIT-S04,0.879,borderline
+AILIT-S04,UNESCO-student,Ethics of AI,0.7444,0.7646,0.974,AILIT-S03,0.879,OVER_RECRUIT
+AILIT-S05,UNESCO-student,Ethics of AI,0.7208,0.7057,1.021,AILIT-S01,0.7768,borderline
+AILIT-S06,UNESCO-student,Ethics of AI,0.7451,0.7666,0.972,AILIT-S03,0.8379,OVER_RECRUIT
+AILIT-S07,UNESCO-student,AI techniques and applications,0.8836,0.7376,1.198,AILIT-S12,0.8423,
+AILIT-S08,UNESCO-student,AI techniques and applications,0.8953,0.7804,1.147,AILIT-S12,0.8861,
+AILIT-S09,UNESCO-student,AI techniques and applications,0.8902,0.8096,1.1,AILIT-S12,0.9039,borderline
+AILIT-S10,UNESCO-student,AI system design,0.8171,0.8085,1.011,AILIT-S09,0.8592,borderline
+AILIT-S11,UNESCO-student,AI system design,0.8075,0.7256,1.113,AILIT-S08,0.8645,
+AILIT-S12,UNESCO-student,AI system design,0.837,0.7963,1.051,AILIT-S09,0.9039,borderline
+AILIT-T01,UNESCO-teacher,Human-centred mindset,nan,0.6562,nan,AILIT-T04,0.7489,
+AILIT-T02,UNESCO-teacher,Ethics of AI,nan,0.6016,nan,AILIT-T04,0.6467,
+AILIT-T03,UNESCO-teacher,AI foundations and applications,nan,0.6549,nan,AILIT-T04,0.703,
+AILIT-T04,UNESCO-teacher,AI pedagogy,nan,0.7319,nan,AILIT-T05,0.8291,
+AILIT-T05,UNESCO-teacher,AI for professional development,nan,0.6721,nan,AILIT-T04,0.8291,
+AILIT-O01,OECD,Engaging with AI,nan,0.7213,nan,AILIT-O04,0.7422,
+AILIT-O02,OECD,Creating with AI,nan,0.7134,nan,AILIT-O04,0.7318,
+AILIT-O03,OECD,Managing AI,nan,0.7199,nan,AILIT-O01,0.7305,
+AILIT-O04,OECD,Designing AI,nan,0.7286,nan,AILIT-O01,0.7422,

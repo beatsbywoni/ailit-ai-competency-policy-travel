@@ -1,0 +1,26 @@
+iso,student_cluster,teacher_cluster,oecd_cluster,rep_score,note
+KR,1,1,1,3,anchor of cluster
+GB,2,2,2,0,
+SG,2,2,2,0,
+FI,2,2,1,1,
+US,2,1,1,2,REPLICATES deviating signature
+CN,2,2,2,0,
+JP,2,2,2,0,
+DE,2,2,1,1,
+FR,2,2,2,0,
+CA,2,2,1,1,
+AU,0,0,0,0,all small-n
+IL,2,2,2,0,
+IN,2,2,2,0,
+EE,2,0,2,0,
+NO,2,2,1,1,
+SE,2,2,1,1,
+NL,2,2,2,0,
+IE,1,1,1,3,anchor of cluster
+ES,2,2,2,0,
+IT,2,2,2,0,
+AE,0,0,0,0,all small-n
+SA,2,2,2,0,
+BR,2,2,2,0,
+MX,2,2,2,0,
+ZA,2,2,2,0,

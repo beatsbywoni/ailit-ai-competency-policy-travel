@@ -1,0 +1,26 @@
+iso,n_docs,weighted_A3_Tech_pct,weighted_A2_Ethics_pct,weighted_T/E,weighted_dominant,raw_T/E,raw_dominant,flipped
+AE,2,0.0,70.0,0.0,A2 Ethics,0.0,A2 Ethics,
+AU,3,29.84,10.48,2.848,A4 SysDes,1.0,A1 HCM,Y
+BR,2,4.28,32.6,0.131,A4 SysDes,0.122,A4 SysDes,
+CA,3,12.26,16.43,0.746,A4 SysDes,0.5,A4 SysDes,
+CN,2,9.38,53.86,0.174,A2 Ethics,2.353,A4 SysDes,Y
+DE,3,9.68,14.5,0.667,A4 SysDes,0.572,A4 SysDes,
+EE,2,1.56,15.62,0.1,A4 SysDes,0.1,A4 SysDes,
+ES,2,17.7,17.65,1.003,A4 SysDes,1.237,A4 SysDes,
+FI,4,18.91,31.91,0.593,A2 Ethics,0.732,A2 Ethics,
+FR,3,10.06,22.05,0.456,A4 SysDes,0.338,A4 SysDes,
+GB,4,21.39,29.16,0.733,A4 SysDes,0.459,A4 SysDes,
+IE,2,27.35,22.3,1.226,A1 HCM,1.416,A1 HCM,
+IL,2,5.92,34.4,0.172,A4 SysDes,0.332,A4 SysDes,
+IN,3,12.84,30.52,0.421,A4 SysDes,0.383,A4 SysDes,
+IT,2,8.31,20.42,0.407,A4 SysDes,0.403,A4 SysDes,
+JP,3,17.19,21.54,0.798,A4 SysDes,0.634,A4 SysDes,
+KR,5,36.92,15.44,2.391,A3 Tech,1.141,A3 Tech,
+MX,2,4.58,46.83,0.098,A2 Ethics,0.212,A2 Ethics,
+NL,2,5.8,11.97,0.485,A1 HCM,0.485,A4 SysDes,Y
+NO,2,22.14,24.8,0.893,A4 SysDes,0.449,A2 Ethics,Y
+SA,2,26.45,16.78,1.576,A4 SysDes,0.836,A4 SysDes,
+SE,2,25.31,13.46,1.88,A4 SysDes,2.414,A4 SysDes,
+SG,3,18.89,24.62,0.767,A1 HCM,0.545,A4 SysDes,Y
+US,4,22.63,23.28,0.972,A4 SysDes,0.737,A2 Ethics,Y
+ZA,2,11.16,30.04,0.372,A4 SysDes,0.267,A2 Ethics,Y

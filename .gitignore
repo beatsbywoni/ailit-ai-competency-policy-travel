@@ -1,0 +1,70 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# --- Copyrighted raw policy data — NEVER commit ---
+# Original PDFs, HTML, and full extracted text of national policy documents
+# are not redistributed. Reviewers re-harvest from primary source URLs in
+# data/corpus_inventory/. See docs/replication.md.
+data/source_pdfs/
+data/corpus_pilot/raw/
+data/corpus_pilot/processed/
+data/corpus_full/
+data/raw_v*/
+data/processed_v*/
+data/processed/
+
+# --- Per-sentence alignment outputs (full text reconstructable) ---
+# These contain the full segmented sentence text and would amount to
+# redistribution of the raw corpus. Aggregated CSVs and matrices remain.
+data/adherence_matrix/*alignment_full*.jsonl
+data/adherence_matrix/*pilot_alignment_full*.jsonl
+**/*.sentences.jsonl
+**/*.alignment*.jsonl
+
+# --- Embedding / model caches ---
+*.npy
+*.npz
+*.pkl
+.cache/
+.cache/huggingface/
+hub/
+
+# --- Regenerable validation cache ---
+data/validation/_negative_raw/
+
+# --- Logs / temporary scripts output ---
+scripts/_logs/
+logs/
+*.log
+
+# --- Archived / deprecated / backup files ---
+*.bak
+*.orig
+*.old
+
+# --- Secrets ---
+.env
+.env.*
+*api_key*
+*secret*
+*_API_KEY*
+*.key
+*.pem
+
+# --- OS / IDE ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp

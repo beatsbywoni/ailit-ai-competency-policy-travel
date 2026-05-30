@@ -1,0 +1,44 @@
+{
+  "framework": "UNESCO AI Competency Framework for Students",
+  "year": 2024,
+  "release_date": "2024-09-02",
+  "source_pdf": "https://unesdoc.unesco.org/ark:/48223/pf0000391105_eng",
+  "source_section": "§3.3 Aspects",
+  "structure": {
+    "aspects": 4,
+    "levels": 3,
+    "total_competencies": 12
+  },
+  "aspect_labels": [
+    "Human-centred mindset",
+    "Ethics of AI",
+    "AI techniques and applications",
+    "AI system design"
+  ],
+  "level_labels": ["Understand", "Apply", "Create"],
+  "competency_block_grid": {
+    "Human-centred mindset": {
+      "Understand": "Human agency",
+      "Apply": "Human accountability",
+      "Create": "Citizenship in the AI era"
+    },
+    "Ethics of AI": {
+      "Understand": "Embodied ethics",
+      "Apply": "Safe and responsible use",
+      "Create": "Ethics by design"
+    },
+    "AI techniques and applications": {
+      "Understand": "AI foundations",
+      "Apply": "Application skills",
+      "Create": "Creating AI tools"
+    },
+    "AI system design": {
+      "Understand": "Problem scoping",
+      "Apply": "Architecture design",
+      "Create": "Iteration and feedback"
+    }
+  },
+  "status": "verbatim",
+  "verbatim_extracted_at": "2026-05-29",
+  "note": "Anchor sentences in unesco_ai_student_2024.csv are verbatim leads from §3.3, with section numbering and cross-references stripped per planning §5.5. The CSV is the authoritative file; this JSON records structural metadata used by scripts/."
+}

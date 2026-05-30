@@ -1,0 +1,102 @@
+# Discriminant validity — module 6 (v1 anchors, θ = 0.35)
+
+Construct-validity test: alignment rate (% of sentences crossing the θ = 0.35 cosine threshold to at least one UNESCO student anchor) on three corpora.
+
+## Aggregate result
+
+| corpus | n_total | n_aligned | rate % |
+|---|---:|---:|---:|
+| positive | 36098 | 24645 | 68.3 |
+| hard-neg | 328 | 236 | 72.0 |
+| off-domain | 3271 | 2 | 0.1 |
+
+## Per-document detail
+
+| corpus | doc_id | n_sents | n_aligned | rate % |
+|---|---|---:|---:|---:|
+| positive | AE-01 | 3 | 2 | 66.67 |
+| positive | AE-02 | 6 | 5 | 83.33 |
+| positive | AU-01 | 44 | 35 | 79.55 |
+| positive | AU-02 | 6 | 6 | 100.0 |
+| positive | AU-03 | 4 | 3 | 75.0 |
+| positive | BR-01 | 2 | 0 | 0.0 |
+| positive | BR-02 | 254 | 150 | 59.06 |
+| positive | BR-03 | 897 | 564 | 62.88 |
+| positive | CA-01 | 20 | 15 | 75.0 |
+| positive | CA-02 | 47 | 44 | 93.62 |
+| positive | CA-03 | 17 | 16 | 94.12 |
+| positive | CN-01 | 469 | 389 | 82.94 |
+| positive | CN-02 | 4 | 1 | 25.0 |
+| positive | CN-03 | 0 | 0 | 0.0 |
+| positive | DE-01 | 623 | 502 | 80.58 |
+| positive | DE-02 | 19 | 16 | 84.21 |
+| positive | DE-03 | 198 | 173 | 87.37 |
+| positive | EE-01 | 3 | 3 | 100.0 |
+| positive | EE-02 | 85 | 64 | 75.29 |
+| positive | ES-01 | 332 | 65 | 19.58 |
+| positive | ES-02 | 201 | 147 | 73.13 |
+| positive | FI-01 | 2944 | 1644 | 55.84 |
+| positive | FI-02 | 6 | 4 | 66.67 |
+| positive | FI-03 | 12 | 12 | 100.0 |
+| positive | FI-04 | 21 | 19 | 90.48 |
+| positive | FR-01 | 385 | 274 | 71.17 |
+| positive | FR-02 | 181 | 162 | 89.5 |
+| positive | FR-03 | 1791 | 1210 | 67.56 |
+| positive | GB-01_full | 125 | 115 | 92.0 |
+| positive | GB-02_full | 688 | 572 | 83.14 |
+| positive | GB-03 | 3 | 3 | 100.0 |
+| positive | GB-04_full | 5 | 5 | 100.0 |
+| positive | IE-01 | 1032 | 854 | 82.75 |
+| positive | IE-02 | 511 | 458 | 89.63 |
+| positive | IL-01 | 1196 | 895 | 74.83 |
+| positive | IL-02 | 144 | 120 | 83.33 |
+| positive | IN-01 | 1826 | 1153 | 63.14 |
+| positive | IN-02 | 1183 | 523 | 44.21 |
+| positive | IN-03 | 120 | 87 | 72.5 |
+| positive | IT-01 | 658 | 506 | 76.9 |
+| positive | IT-02 | 745 | 574 | 77.05 |
+| positive | JP-01 | 1047 | 544 | 51.96 |
+| positive | JP-02 | 271 | 197 | 72.69 |
+| positive | JP-03 | 31 | 28 | 90.32 |
+| positive | KR-01 | 122 | 96 | 78.69 |
+| positive | KR-02 | 4041 | 3072 | 76.02 |
+| positive | KR-03 | 124 | 104 | 83.87 |
+| positive | KR-04 | 131 | 118 | 90.08 |
+| positive | KR-05 | 76 | 53 | 69.74 |
+| positive | MX-01 | 2177 | 1256 | 57.69 |
+| positive | MX-02 | 74 | 55 | 74.32 |
+| positive | NL-01 | 1360 | 948 | 69.71 |
+| positive | NL-02 | 4 | 4 | 100.0 |
+| positive | NO-01 | 1844 | 1031 | 55.91 |
+| positive | NO-02 | 10 | 7 | 70.0 |
+| positive | SA-01 | 298 | 216 | 72.48 |
+| positive | SA-02 | 35 | 32 | 91.43 |
+| positive | SE-01 | 156 | 127 | 81.41 |
+| positive | SE-02 | 325 | 261 | 80.31 |
+| positive | SG-01 | 749 | 482 | 64.35 |
+| positive | SG-02 | 8 | 7 | 87.5 |
+| positive | SG-03 | 14 | 13 | 92.86 |
+| positive | US-01 | 438 | 270 | 61.64 |
+| positive | US-02 | 1653 | 1344 | 81.31 |
+| positive | US-03 | 56 | 46 | 82.14 |
+| positive | US-04 | 2085 | 1582 | 75.88 |
+| positive | ZA-01 | 1934 | 1249 | 64.58 |
+| positive | ZA-02 | 225 | 113 | 50.22 |
+| hard-neg | HARD-02 | 2 | 1 | 50.0 |
+| hard-neg | HARD-03 | 23 | 22 | 95.65 |
+| hard-neg | HARD-04 | 303 | 213 | 70.3 |
+| off-domain | OFF-01 | 2071 | 1 | 0.05 |
+| off-domain | OFF-02 | 709 | 1 | 0.14 |
+| off-domain | OFF-03 | 491 | 0 | 0.0 |
+
+## Interpretation
+
+- Positive (25-country education-policy corpus) alignment rate: **68.3 %**
+- Off-domain negative (fiction + Wikipedia non-AI) alignment rate: **0.1 %**
+- Hard-negative (AI policy in health/defence/corporate domains) alignment rate: **72.0 %**
+
+Expected pattern: positive ≫ hard-negative ≫ off-domain.
+
+If both negative rates are substantially below the positive rate (e.g. > 20 pp gap), the 12 UNESCO student anchors are measuring something *specific* to AI-in-education policy text — not a generic 'is this English-language formal prose' signal. This is the C&E I.4 (off-domain discriminant) + I.5 (hard-negative discriminant) checklist requirement.
+
+If the gap is small (< 10 pp), the anchors are over-general and §3.3 (anchor cohesion) needs further sharpening — and the manuscript's construct-validity claim collapses.

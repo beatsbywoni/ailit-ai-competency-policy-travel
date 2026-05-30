@@ -1,0 +1,23 @@
+{
+  "title": "AILIT_TRAVEL: Replication Archive",
+  "description": "Replication archive for a sentence-embedding-based cross-national analysis of national AI-in-education policy text adoption against three independent AI competency frameworks (UNESCO Student, UNESCO Teacher, and OECD-European Commission AI Literacy Framework). Contains anchor sentences, adherence matrices, robustness battery outputs, clustering results, and figures for the 25-country corpus. Code: MIT License. Data: CC BY 4.0. During anonymous peer review the author block is anonymised; full attribution is added at publication.",
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "language": "eng",
+  "creators": [
+    {
+      "name": "Author information added at acceptance",
+      "affiliation": "Affiliation added at acceptance"
+    }
+  ],
+  "keywords": [
+    "AI literacy",
+    "AI competency frameworks",
+    "cross-national policy analysis",
+    "sentence-embedding alignment",
+    "hierarchical clustering",
+    "diffusion of innovations"
+  ],
+  "notes": "Code: MIT License. Data: CC BY 4.0. During anonymous peer review the author block is anonymised; full attribution is added at publication."
+}

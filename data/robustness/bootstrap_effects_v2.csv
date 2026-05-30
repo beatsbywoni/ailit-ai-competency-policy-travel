@@ -1,0 +1,5 @@
+contrast,point_pct,ci_lo,ci_hi,note
+canonical_mean,3.05,2.78,3.37,mean across 21 canonical countries
+IE − canonical_mean,20.33,18.04,22.74,effect size for the Cluster-1 deviation
+KR − canonical_mean,27.19,25.53,28.89,effect size for the Cluster-1 deviation
+IE-01 − IE-02 (intra-IE asymmetry),21.16,17.24,25.32,"n_IE-01=840, n_IE-02=450"

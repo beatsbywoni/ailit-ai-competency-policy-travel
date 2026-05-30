@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+title: "AILIT_TRAVEL: Replication Archive"
+message: >-
+  This archive accompanies a manuscript currently under anonymous peer review.
+  Citation metadata will be populated upon acceptance.
+type: software
+version: "1.0.0-preprint"
+date-released: "2026-05-30"
+authors:
+  - name: "Author information withheld during anonymous peer review"
+abstract: >-
+  Replication archive for a sentence-embedding-based cross-national analysis of
+  national AI-in-education policy text adoption against three independent AI
+  competency frameworks (UNESCO Student, UNESCO Teacher, and OECD-European
+  Commission AI Literacy Framework). Contains anchor sentences, adherence
+  matrices, robustness battery outputs, clustering results, and figures for the
+  25-country corpus.
+keywords:
+  - AI literacy
+  - AI competency frameworks
+  - cross-national policy analysis
+  - sentence-embedding alignment
+  - hierarchical clustering
+license: "MIT"

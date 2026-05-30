@@ -1,0 +1,26 @@
+iso,drop_doc,drop_n,kept_n,orig_dom,loo_dom,orig_cluster,loo_cluster,flipped
+AE,AE-02,5,2,A2 Ethics,A2 Ethics,2,2,
+AU,AU-01,35,9,A1 HCM,A4 SysDes,2,1,Y
+BR,BR-03,564,150,A4 SysDes,A4 SysDes,2,2,
+CA,CA-02,44,31,A4 SysDes,A4 SysDes,2,2,
+CN,CN-01,389,1,A4 SysDes,A2 Ethics,2,1,Y
+DE,DE-01,502,189,A4 SysDes,A4 SysDes,2,2,
+EE,EE-02,64,3,A4 SysDes,A4 SysDes,2,2,
+ES,ES-02,147,65,A4 SysDes,A1 HCM,2,2,
+FI,FI-01,1644,35,A2 Ethics,A2 Ethics,2,1,Y
+FR,FR-03,1210,436,A4 SysDes,A4 SysDes,2,2,
+GB,GB-02_full,572,123,A4 SysDes,A2 Ethics,2,2,
+IE,IE-01,854,458,A1 HCM,A2 Ethics,1,2,Y
+IL,IL-01,895,120,A4 SysDes,A2 Ethics,2,2,
+IN,IN-01,1153,610,A4 SysDes,A2 Ethics,2,2,
+IT,IT-02,574,506,A4 SysDes,A4 SysDes,2,2,
+JP,JP-01,544,225,A4 SysDes,A4 SysDes,2,2,
+KR,KR-02,3072,371,A3 Tech,A3 Tech,1,1,
+MX,MX-01,1256,55,A2 Ethics,A2 Ethics,2,2,
+NL,NL-01,948,4,A4 SysDes,A1 HCM,2,1,Y
+NO,NO-01,1031,7,A2 Ethics,A4 SysDes,2,2,
+SA,SA-01,216,32,A4 SysDes,A4 SysDes,2,2,
+SE,SE-02,261,127,A4 SysDes,A4 SysDes,2,2,
+SG,SG-01,482,20,A4 SysDes,A1 HCM,2,1,Y
+US,US-04,1582,1660,A2 Ethics,A4 SysDes,2,2,
+ZA,ZA-01,1249,113,A2 Ethics,A4 SysDes,2,2,

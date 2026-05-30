@@ -1,0 +1,8 @@
+timestamp	doc_id	url	status	size_bytes
+2026-05-30T06:05:05Z	OFF-01	https://www.gutenberg.org/cache/epub/64317/pg64317-images.html	ok_http=200	324925
+2026-05-30T06:05:06Z	OFF-02	https://en.wikipedia.org/wiki/World_War_I	ok_http=200	1030354
+2026-05-30T06:05:07Z	OFF-03	https://en.wikipedia.org/wiki/Photosynthesis	ok_http=200	659223
+2026-05-30T06:05:09Z	HARD-01	https://iris.who.int/bitstream/handle/10665/341996/9789240029200-eng.pdf	ok_http=200	755
+2026-05-30T06:05:09Z	HARD-02	https://www.defense.gov/News/Releases/Release/Article/2091996/dod-adopts-ethical-principles-for-artificial-intelligence/	fail_http=403	513
+2026-05-30T06:05:11Z	HARD-03	https://ai.google/principles/	ok_http=200	165936
+2026-05-30T06:05:12Z	HARD-04	https://blogs.microsoft.com/wp-content/uploads/prod/sites/5/2022/06/Microsoft-Responsible-AI-Standard-v2-General-Requirements-3.pdf	ok_http=200	636601
