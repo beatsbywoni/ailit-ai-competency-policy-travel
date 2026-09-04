@@ -62,7 +62,7 @@ INVENTORY = REPO / "data" / "corpus_inventory" / "sprint1_urls.csv"
 MATRIX_DIR = REPO / "data" / "adherence_matrix"
 CLUSTER_DIR = REPO / "data" / "clustering"
 MODEL_NAME = "sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
-TAG = "oecd_final"
+TAG = "oecd_final"   # overridden to "oecd_final_chunkavg" under --anchor-mode chunkavg
 
 
 def load_anchors(path: Path) -> list[dict]:
@@ -131,6 +131,35 @@ def resolve_final_anchors(model, anchors: list[dict], csv_path: Path) -> list[di
     return anchors
 
 
+def chunk_average_embeddings(model, anchors: list[dict]) -> np.ndarray:
+    """Robustness check: represent each final anchor by its WHOLE opener paragraph.
+    The paragraph is split into contiguous chunks of complete sentences, each within
+    the encoder window; chunk embeddings are averaged with token-count weights and
+    re-normalised. Prints the chunking so it can be reported."""
+    win = int(model.max_seq_length)
+    out = []
+    print(f"[anchors] chunk-averaged whole-paragraph anchors (window {win} tokens):")
+    for a in anchors:
+        ss = split_sentences(a["paragraph_full"] or a["sentence"])
+        chunks, cur = [], []
+        for sent in ss:
+            trial = " ".join(cur + [sent])
+            if cur and n_tokens(model, trial) > win:
+                chunks.append(" ".join(cur)); cur = [sent]
+            else:
+                cur.append(sent)
+        if cur:
+            chunks.append(" ".join(cur))
+        toks = np.array([n_tokens(model, c) for c in chunks], dtype=float)
+        assert toks.max() <= win, f"{a['anchor_id']}: a single sentence exceeds the window"
+        E = model.encode(chunks, normalize_embeddings=True, convert_to_numpy=True, show_progress_bar=False)
+        v = (E * (toks / toks.sum())[:, None]).sum(axis=0)
+        v = v / np.linalg.norm(v)
+        out.append(v)
+        print(f"  {a['anchor_id']}: {len(ss)} sentences → {len(chunks)} chunk(s), tokens {[int(t) for t in toks]}")
+    return np.vstack(out)
+
+
 def report_token_lengths(model, label: str, path: Path) -> None:
     """Informational: token length of every pre-specified anchor vs the window."""
     win = int(model.max_seq_length)
@@ -182,7 +211,14 @@ def main() -> int:
     ap.add_argument("--batch-size", type=int, default=64)
     ap.add_argument("--min-aligned", type=int, default=50)
     ap.add_argument("--no-plot", action="store_true")
+    ap.add_argument("--anchor-mode", choices=["window", "chunkavg"], default="window",
+                    help="window (default): rule-resolved initial sentences within the 128-token window; "
+                         "chunkavg: robustness check — embed the WHOLE opener paragraph as contiguous "
+                         "<=128-token chunks and average the chunk embeddings (token-weighted), outputs *_oecd_final_chunkavg")
     args = ap.parse_args()
+    global TAG
+    if args.anchor_mode == "chunkavg":
+        TAG = "oecd_final_chunkavg"
 
     MATRIX_DIR.mkdir(parents=True, exist_ok=True)
     CLUSTER_DIR.mkdir(parents=True, exist_ok=True)
@@ -215,9 +251,12 @@ def main() -> int:
     n_sents = sum(len(v) for v in corpus.values())
     print(f"[corpus ] {len(corpus)} documents, {n_sents:,} sentences (frozen May 2026 harvest)")
 
-    # ---------------------------------------------------------------- embed
-    A = model.encode([a["sentence"] for a in anchors], normalize_embeddings=True,
-                     convert_to_numpy=True, show_progress_bar=False)
+    # ---------------------------------------------------------------- embed anchors
+    if args.anchor_mode == "window":
+        A = model.encode([a["sentence"] for a in anchors], normalize_embeddings=True,
+                         convert_to_numpy=True, show_progress_bar=False)
+    else:
+        A = chunk_average_embeddings(model, anchors)
 
     align_out = MATRIX_DIR / f"sprint1_alignment_full_{TAG}.jsonl"
     counts: dict[tuple[str, str], int] = defaultdict(int)
@@ -318,7 +357,7 @@ def main() -> int:
                 import matplotlib.pyplot as plt
                 fig, ax = plt.subplots(figsize=(10, 5))
                 dendrogram(Z, labels=countries, ax=ax, leaf_font_size=9)
-                ax.set_title("OECD–EC FINAL (June 2026) anchors — Ward linkage on Hellinger distance")
+                ax.set_title(f"OECD–EC FINAL (June 2026) anchors [{TAG}] — Ward linkage on Hellinger distance")
                 plt.tight_layout(); fig.savefig(CLUSTER_DIR / f"dendrogram_{TAG}_ward.png", dpi=150); plt.close(fig)
                 print(f"[out    ] {CLUSTER_DIR / f'dendrogram_{TAG}_ward.png'}")
             except Exception as e:
@@ -351,7 +390,7 @@ def main() -> int:
         return {c: (1 if l == minority else 2) for c, l in lab_map.items()}
     final_map = orient(dict(zip(countries, [int(x) for x in final_lab])))
     draft_map = orient(draft)
-    cmp_csv = CLUSTER_DIR / "oecd_draft_vs_final_comparison.csv"
+    cmp_csv = CLUSTER_DIR / ("oecd_draft_vs_final_comparison.csv" if TAG == "oecd_final" else f"oecd_draft_vs_{TAG}_comparison.csv")
     with cmp_csv.open("w", newline="", encoding="utf-8") as f:
         w = csv.writer(f); w.writerow(["country", "draft_2025_ward_K2", "final_2026_ward_K2", "changed"])
         for c in load_country_order():
@@ -377,7 +416,7 @@ def main() -> int:
 
     # ---------------------------------------------------------------- verification + extension
     print()
-    print("[next   ] run: python scripts/06_oecd_final/verify_oecd_final.py   (Table 3, silhouettes, A3 checks)")
+    print(f"[next   ] run: python scripts/06_oecd_final/verify_oecd_final.py --tag {TAG}   (Table 3, silhouettes, A3 checks)")
     return 0
 
 

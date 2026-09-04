@@ -1,4 +1,4 @@
-# OECD–EC final-framework re-run — verification report
+# OECD–EC final-framework re-run — verification report [oecd_final]
 eligibility floor: n_aligned >= 50
 
 ## A2 — alignment totals (all 25 countries)

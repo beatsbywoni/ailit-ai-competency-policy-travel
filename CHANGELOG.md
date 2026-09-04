@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 2026-09-04 (evening) — anchor-representation check (whole-paragraph, chunk-averaged)
+
+- **Added** `run_oecd_final.py --anchor-mode chunkavg`: each final domain represented by its whole opener paragraph, split into contiguous ≤128-token chunks of complete sentences, chunk embeddings averaged with token weights and re-normalised. Outputs `*_oecd_final_chunkavg*`; `verify_oecd_final.py --tag oecd_final_chunkavg` → `data/clustering/oecd_final_chunkavg_verification.{md,json}`. Definitional-anchor outputs untouched.
+- **Result:** share-level picture reverses (alignment 22,386 = 62.0%; Shape AI mean 61.2%, range 31.6–82.7, because sentences 6–9 of the paragraph are implementation prose); classification-level picture unchanged (K = 2 Estonian singleton, silhouette 0.578; no Korea–Ireland minority group at any K with Estonia excluded or floor 100; mean pairwise Hellinger 0.146; Korea 0.139 / Ireland 0.190 from the canonical centroid). Reported in the manuscript's Results, Limitations, Appendix D (‡ rows) and Appendix E.7a.
+
 ## 2026-09-04 (later) — pre-submission verification: anchor rule, corrected re-run, sanity checks
 
 - **Corrected** `anchors/oecd_ai_literacy_2026_final.csv`. The first version of the Shape AI anchor was a non-contiguous excerpt of the domain-opener paragraph (one sentence skipped) and, at ≈139 tokens, exceeded the encoder's 128-token default window, so the model had truncated it silently. The CSV now stores the complete verbatim opener paragraphs (`paragraph_full`) and an `anchor_sentence` defined by rule as the longest run of *initial* sentences that fits the 128-token window, resolved at run time with the model tokeniser: O01F sentences 1–4 of 5 (118 tokens), O02F 1–4 of 5 (114), O03F 1–3 of 3 (112), O04F 1–3 of 9 (96). Pre-specified anchor sets untouched; their token lengths (all ≤ 126) are printed by the run for the record.

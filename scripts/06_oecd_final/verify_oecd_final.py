@@ -128,21 +128,23 @@ def mean_pairwise(H: np.ndarray) -> float:
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--min-aligned", type=int, default=50)
+    ap.add_argument("--tag", default="oecd_final", help="output suffix of the run to verify (oecd_final | oecd_final_chunkavg)")
     args = ap.parse_args()
     N = args.min_aligned
+    TAG = args.tag
     rep: dict = {"min_aligned": N}
     lines: list[str] = []
     say = lambda s="": (print(s), lines.append(s))
 
     # ---------- load draft & final OECD matrices
     cD, aD, PD_pct, tD = read_matrix(MAT / "sprint1_25x4_pct_oecd.csv")
-    cF, aF, PF_pct, tF = read_matrix(MAT / "sprint1_25x4_pct_oecd_final.csv")
+    cF, aF, PF_pct, tF = read_matrix(MAT / f"sprint1_25x4_pct_{TAG}.csv")
     _, _, CD, tD2 = read_matrix(MAT / "sprint1_25x4_counts_oecd.csv")
-    _, _, CF, tF2 = read_matrix(MAT / "sprint1_25x4_counts_oecd_final.csv")
+    _, _, CF, tF2 = read_matrix(MAT / f"sprint1_25x4_counts_{TAG}.csv")
     assert cD == cF, "country order differs between draft and final matrices"
     assert (tD == tD2).all() and (tF == tF2).all()
 
-    say("# OECD–EC final-framework re-run — verification report")
+    say(f"# OECD–EC final-framework re-run — verification report [{TAG}]")
     say(f"eligibility floor: n_aligned >= {N}")
     say()
 
@@ -197,7 +199,7 @@ def main() -> int:
     say("## A2 — Hellinger matrix and silhouettes (final anchors)")
     PFn = PF / PF.sum(axis=1, keepdims=True)
     HF = hellinger(PFn)
-    hdr_disk, H_disk = read_dist(CLU / "hellinger_dist_oecd_final.csv")
+    hdr_disk, H_disk = read_dist(CLU / f"hellinger_dist_{TAG}.csv")
     same_order = hdr_disk == elig
     maxdiff = float(np.abs(H_disk - HF).max()) if same_order else float("nan")
     say(f"on-disk Hellinger matrix: same country order = {same_order}; max |diff| vs recomputed = {maxdiff:.2e}")
@@ -313,10 +315,10 @@ def main() -> int:
     say()
 
     # ---------- write
-    (CLU / "oecd_final_verification.json").write_text(json.dumps(rep, indent=2, ensure_ascii=False), encoding="utf-8")
-    (CLU / "oecd_final_verification.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    print(f"[out] {CLU / 'oecd_final_verification.json'}")
-    print(f"[out] {CLU / 'oecd_final_verification.md'}")
+    (CLU / f"{TAG}_verification.json").write_text(json.dumps(rep, indent=2, ensure_ascii=False), encoding="utf-8")
+    (CLU / f"{TAG}_verification.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
+    print(f"[out] {CLU / f'{TAG}_verification.json'}")
+    print(f"[out] {CLU / f'{TAG}_verification.md'}")
     return 0
 
 
