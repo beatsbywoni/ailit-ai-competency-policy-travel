@@ -212,7 +212,7 @@ Cukurova, Mutlu. 2025. "The Interplay of Learning, Analytics and Artificial Inte
 
 DiMaggio, Paul J., and Walter W. Powell. 1983. "The Iron Cage Revisited: Institutional Isomorphism and Collective Rationality in Organizational Fields." *American Sociological Review* 48 (2): 147–60.
 
-Eğin, Fatih, Aytuğ Onan, and Hatice Yildiz Durak. 2025. "Let's Talk About EdTech! A Topic Modelling Analysis of AI Tools and Pre-Service Teachers' Perspectives." *European Journal of Education* 60 (1): e12913.
+Eğin, Figen, Aytuğ Onan, and Hatice Yildiz Durak. 2025. "Let's Talk About EdTech! A Topic Modelling Analysis of AI Tools and Pre-Service Teachers' Perspectives." *European Journal of Education* 60 (1): e12913.
 
 European Parliament and Council. 2024. Regulation (EU) 2024/1689 of 13 June 2024 Laying Down Harmonised Rules on Artificial Intelligence (Artificial Intelligence Act). *Official Journal of the European Union* L, 2024/1689.
 
