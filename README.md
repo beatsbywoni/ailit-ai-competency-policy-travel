@@ -1,6 +1,6 @@
 # AILIT_TRAVEL — Replication Archive
 
-> Replication archive for a manuscript under anonymous peer review at *Computers & Education*.
+> Replication archive for a manuscript under double-anonymised peer review. Journal name withheld during review.
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.PLACEHOLDER.svg)](https://doi.org/10.5281/zenodo.PLACEHOLDER) <!-- replaced at publication -->
 [![License: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
@@ -8,7 +8,7 @@
 
 ## One-line summary
 
-A sentence-embedding-based cross-national analysis of how 25 national AI-in-education policy texts (67 documents, 9 languages, 2017–2026) take up the conceptual architecture of three independent AI competency frameworks: the UNESCO AI Competency Framework for Students (12 anchors), the UNESCO AI Competency Framework for Teachers (5 anchors), and the OECD–European Commission AI Literacy Framework (4 anchors).
+A sentence-embedding-based cross-national analysis of how 25 national AI-in-education policy texts (67 documents, 8 languages, 2017–2026) take up the conceptual architecture of three AI competency frameworks: the UNESCO AI Competency Framework for Students (12 anchors; Miao & Shiohira 2024), the UNESCO AI Competency Framework for Teachers (5 anchors; Miao & Cukurova 2024), and the OECD–European Commission AI Literacy Framework (4 anchors; May 2025 review draft as the pre-specified anchor set, plus a post-hoc re-run against the June 2026 final framework — see CHANGELOG.md).
 
 ## Reproduce the headline numbers
 

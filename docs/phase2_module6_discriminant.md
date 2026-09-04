@@ -8,7 +8,7 @@
 
 ## Project reminder
 
-We are building this evidence for the §3 (Method) and §4.6 (Robustness) of the *Computers & Education* manuscript on the K = 2 cluster (KR + IE Tool-use deviation vs 21 canonical System-Design countries) in national AI competency policy adoption. Discriminant validity is the construct-level check: does the 12-anchor system *actually measure* alignment to UNESCO's AI student competencies, or is it just detecting "formal English-language policy prose"?
+We are building this evidence for the §3 (Method) and §4.6 (Robustness) of the manuscript on the K = 2 cluster (KR + IE Tool-use deviation vs 21 canonical System-Design countries) in national AI competency policy adoption. Discriminant validity is the construct-level check: does the 12-anchor system *actually measure* alignment to UNESCO's AI student competencies, or is it just detecting "formal English-language policy prose"?
 
 ## Headline result (v2 anchors, θ = 0.35)
 

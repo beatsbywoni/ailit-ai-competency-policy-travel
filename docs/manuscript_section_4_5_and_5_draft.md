@@ -1,6 +1,6 @@
 # Manuscript draft — §4.5 + §5
 
-**Target journal:** *Computers & Education* (Elsevier; SSCI Q1; IF 13.85)
+**Target journal:** the target journal (SSCI)
 **Draft date:** 2026-05-30
 **Status:** first internal draft; all numerical claims sourced from `data/` artefacts in this repository; one-figure-one-table version pending journal-style review.
 
@@ -111,4 +111,4 @@ Next steps:
 - Figure 1 = `data/clustering/figure_cross_framework_v2.png`
 - Figure 2 (suggested) = `data/clustering/figure_robustness_summary_v2.png`
 
-Estimated current word count for §4.5 + §5: ~2,800 words. *Computers & Education* main-text target is 8,000–10,000 words inclusive of all sections, so this is approximately one-third of the manuscript.
+Estimated current word count for §4.5 + §5: ~2,800 words. the target journal's main-text target is 8,000–10,000 words inclusive of all sections, so this is approximately one-third of the manuscript.

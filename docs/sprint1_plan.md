@@ -11,7 +11,7 @@
 
 ## Why this exists
 
-Sprint 0/0.5 closed with a clean **4-pattern bifurcation** finding at n = 5. Sprint 1 expands to n = 25 to test whether the pattern (i) generalises, (ii) fragments into more clusters, or (iii) collapses. Sprint 1's outputs are the empirical core of the Computers & Education submission.
+Sprint 0/0.5 closed with a clean **4-pattern bifurcation** finding at n = 5. Sprint 1 expands to n = 25 to test whether the pattern (i) generalises, (ii) fragments into more clusters, or (iii) collapses. Sprint 1's outputs are the empirical core of the the target journal submission.
 
 Every phase is sequenced so that any sub-output is publishable at its own granularity even if subsequent phases slip.
 

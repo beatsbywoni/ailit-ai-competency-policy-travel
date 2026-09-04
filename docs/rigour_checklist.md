@@ -1,6 +1,6 @@
 # C&E rigour checklist — living document
 
-**Target journal**: *Computers & Education* (Elsevier, SSCI Q1, IF 13.85)
+**Target journal**: the target journal (SSCI)
 **Last updated**: 2026-05-29 (Sprint 0 → Sprint 1 boundary)
 **Discipline**: every project decision is logged here against C&E publication-standard expectations. Updated at the end of each Sprint phase.
 

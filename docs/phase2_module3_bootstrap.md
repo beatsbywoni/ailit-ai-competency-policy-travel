@@ -67,7 +67,7 @@ For the manuscript, this licenses the following sharper claim:
 
 > "Ireland's joint membership of the Tool-use cluster is driven almost entirely by the 2025 Junior Cert guidance (IE-01, AILIT-S08 share 30.7 %); the older Ireland AI strategy (IE-02, AILIT-S08 share 9.6 %) sits squarely within the canonical System-Design signature. The intra-Ireland asymmetry on the Tool-use anchor is +21.16 percentage points (95 % CI [17.24, 25.32]), as large as the entire KR-vs-canonical effect. Korea, in contrast, shows the Tool-use signature replicated across all five of its national documents and survives a leave-one-out drop of the dominant document KR-02."
 
-That is exactly the kind of nuanced, evidence-backed finding that *Computers & Education* expects in §4.6 robustness — a single decisive effect (KR) plus a transparent caveat with a quantified asymmetry (IE).
+That is exactly the kind of nuanced, evidence-backed finding that a rigorous SSCI venue expects in §4.6 robustness — a single decisive effect (KR) plus a transparent caveat with a quantified asymmetry (IE).
 
 ## Coverage of C&E rigour checklist
 

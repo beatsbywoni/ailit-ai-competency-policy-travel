@@ -4,7 +4,7 @@
 **Inputs:** `sprint1_25x12_pct_v2.csv` (student 12), `sprint1_25x5_pct_teacher.csv` (teacher 5), `sprint1_25x4_pct_oecd.csv` (OECD 4)
 **Code:** `scripts/03_analysis/cross_framework_compare.py`, `scripts/02_pipeline/07_embed_and_align.py` (`--anchor-set teacher|oecd`)
 **Outputs:** `data/clustering/cross_framework_v2.{csv,md}`
-**Project reminder:** *Computers & Education* (SSCI Q1, IF 13.85) submission. §4.5 main claim is the K = 2 partition {KR, IE} vs 21 canonical countries (Tool-use vs System-Design). C&E reviewers commonly raise "is this finding an artefact of which anchor framework you chose?" — Phase 3 directly answers that.
+**Project reminder:** the target journal (SSCI) submission. §4.5 main claim is the K = 2 partition {KR, IE} vs 21 canonical countries (Tool-use vs System-Design). C&E reviewers commonly raise "is this finding an artefact of which anchor framework you chose?" — Phase 3 directly answers that.
 
 ## Headline result
 
