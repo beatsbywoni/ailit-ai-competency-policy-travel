@@ -79,7 +79,7 @@ def main() -> int:
 
     # Build the figure: 1 row × 5 panels
     fig, axes = plt.subplots(1, 5, figsize=(18, 5))
-    fig.suptitle(f"Robustness of the K=2 cluster {{KR, IE}} — {args.tag} anchors",
+    fig.suptitle("Robustness of the K = 2 cluster {KR, IE} — UNESCO Student anchors" + ("" if args.tag == "v2" else f" ({args.tag})"),
                  fontsize=14, fontweight="bold")
 
     target_countries = ["KR", "IE"]
@@ -100,7 +100,7 @@ def main() -> int:
     ax.axvline(can_mean, color=colors["canonical"], linestyle="--", linewidth=1)
     ax.set_yticks(ys)
     ax.set_yticklabels(target_countries)
-    ax.set_xlabel("AILIT-S08 share (%)")
+    ax.set_xlabel("Application Skills (AILIT-S08) share (%)")
     ax.set_title("Module 3: Bootstrap CI (n=1,000)")
     ax.set_xlim(0, max(35, can_hi + 5))
     ax.invert_yaxis()
@@ -205,7 +205,7 @@ def main() -> int:
     plt.tight_layout(rect=[0, 0.03, 1, 0.93])
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     out_path = OUT_DIR / f"figure_robustness_summary{suffix}.png"
-    plt.savefig(out_path, dpi=160, bbox_inches="tight")
+    plt.savefig(out_path, dpi=300, bbox_inches="tight")
     print(f"[out] {out_path}")
     return 0
 

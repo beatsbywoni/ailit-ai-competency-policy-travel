@@ -1,0 +1,1339 @@
+{
+  "min_aligned": 50,
+  "aligned_total": {
+    "draft": 18872,
+    "final": 19509
+  },
+  "eligible": [
+    "KR",
+    "GB",
+    "SG",
+    "FI",
+    "US",
+    "CN",
+    "JP",
+    "DE",
+    "FR",
+    "CA",
+    "IL",
+    "IN",
+    "EE",
+    "NO",
+    "SE",
+    "NL",
+    "IE",
+    "ES",
+    "IT",
+    "SA",
+    "BR",
+    "MX",
+    "ZA"
+  ],
+  "table3": {
+    "draft": {
+      "AILIT-O01": {
+        "mean": 25.2,
+        "sd": 6.1,
+        "min": 14.5,
+        "max": 36.8,
+        "argmin": "IT",
+        "argmax": "SE"
+      },
+      "AILIT-O02": {
+        "mean": 14.7,
+        "sd": 5.7,
+        "min": 3.0,
+        "max": 23.2,
+        "argmin": "IE",
+        "argmax": "IN"
+      },
+      "AILIT-O03": {
+        "mean": 31.6,
+        "sd": 13.2,
+        "min": 8.2,
+        "max": 56.6,
+        "argmin": "IE",
+        "argmax": "EE"
+      },
+      "AILIT-O04": {
+        "mean": 28.5,
+        "sd": 14.4,
+        "min": 3.8,
+        "max": 69.0,
+        "argmin": "EE",
+        "argmax": "IE"
+      }
+    },
+    "final": {
+      "AILIT-O01F": {
+        "mean": 25.2,
+        "sd": 7.8,
+        "min": 15.3,
+        "max": 49.1,
+        "argmin": "US",
+        "argmax": "EE"
+      },
+      "AILIT-O02F": {
+        "mean": 22.8,
+        "sd": 7.8,
+        "min": 0.0,
+        "max": 36.3,
+        "argmin": "EE",
+        "argmax": "CN"
+      },
+      "AILIT-O03F": {
+        "mean": 45.6,
+        "sd": 6.4,
+        "min": 33.0,
+        "max": 58.5,
+        "argmin": "SA",
+        "argmax": "BR"
+      },
+      "AILIT-O04F": {
+        "mean": 6.4,
+        "sd": 5.1,
+        "min": 1.0,
+        "max": 25.3,
+        "argmin": "SA",
+        "argmax": "IE"
+      }
+    },
+    "sum_sd": {
+      "draft": 39.4,
+      "final": 27.1
+    }
+  },
+  "named": {
+    "KR": {
+      "O4_draft": 43.4,
+      "O4_final": 9.5
+    },
+    "US": {
+      "O4_draft": 54.7,
+      "O4_final": 10.6
+    },
+    "IE": {
+      "O4_draft": 69.0,
+      "O4_final": 25.3
+    },
+    "FR": {
+      "O4_draft": 22.7,
+      "O4_final": 10.4
+    },
+    "EE": {
+      "O4_draft": 3.8,
+      "O4_final": 3.8
+    }
+  },
+  "top_final_O4": [
+    [
+      "IE",
+      25.3
+    ],
+    [
+      "US",
+      10.6
+    ],
+    [
+      "FR",
+      10.4
+    ],
+    [
+      "NO",
+      10.1
+    ]
+  ],
+  "hellinger_disk_check": {
+    "same_order": true,
+    "max_abs_diff": 4.9877594839820016e-05
+  },
+  "silhouette_final": {
+    "ward_K2": {
+      "silhouette": 0.6507,
+      "groups": [
+        [
+          "BR",
+          "CA",
+          "CN",
+          "DE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "IE",
+          "IL",
+          "IN",
+          "IT",
+          "JP",
+          "KR",
+          "MX",
+          "NL",
+          "NO",
+          "SA",
+          "SE",
+          "SG",
+          "US",
+          "ZA"
+        ],
+        [
+          "EE"
+        ]
+      ]
+    },
+    "ward_K3": {
+      "silhouette": 0.2879,
+      "groups": [
+        [
+          "BR",
+          "CA",
+          "CN",
+          "ES",
+          "FI",
+          "FR",
+          "IE",
+          "IN",
+          "KR",
+          "MX",
+          "NO",
+          "SE",
+          "US",
+          "ZA"
+        ],
+        [
+          "DE",
+          "GB",
+          "IL",
+          "IT",
+          "JP",
+          "NL",
+          "SA",
+          "SG"
+        ],
+        [
+          "EE"
+        ]
+      ]
+    },
+    "ward_K4": {
+      "silhouette": 0.2987,
+      "groups": [
+        [
+          "BR",
+          "CA",
+          "CN",
+          "ES",
+          "FI",
+          "FR",
+          "IN",
+          "KR",
+          "MX",
+          "NO",
+          "SE",
+          "US",
+          "ZA"
+        ],
+        [
+          "DE",
+          "GB",
+          "IL",
+          "IT",
+          "JP",
+          "NL",
+          "SA",
+          "SG"
+        ],
+        [
+          "EE"
+        ],
+        [
+          "IE"
+        ]
+      ]
+    },
+    "ward_K5": {
+      "silhouette": 0.3636,
+      "groups": [
+        [
+          "CN",
+          "FI",
+          "KR"
+        ],
+        [
+          "DE",
+          "GB",
+          "IL",
+          "IT",
+          "JP",
+          "NL",
+          "SA",
+          "SG"
+        ],
+        [
+          "BR",
+          "CA",
+          "ES",
+          "FR",
+          "IN",
+          "MX",
+          "NO",
+          "SE",
+          "US",
+          "ZA"
+        ],
+        [
+          "EE"
+        ],
+        [
+          "IE"
+        ]
+      ]
+    },
+    "ward_K6": {
+      "silhouette": 0.3605,
+      "groups": [
+        [
+          "CN",
+          "FI",
+          "KR"
+        ],
+        [
+          "DE",
+          "GB",
+          "IL",
+          "IT",
+          "JP",
+          "NL",
+          "SG"
+        ],
+        [
+          "BR",
+          "CA",
+          "ES",
+          "FR",
+          "IN",
+          "MX",
+          "NO",
+          "SE",
+          "US",
+          "ZA"
+        ],
+        [
+          "EE"
+        ],
+        [
+          "IE"
+        ],
+        [
+          "SA"
+        ]
+      ]
+    },
+    "average_K2": {
+      "silhouette": 0.6507,
+      "groups": [
+        [
+          "BR",
+          "CA",
+          "CN",
+          "DE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "IE",
+          "IL",
+          "IN",
+          "IT",
+          "JP",
+          "KR",
+          "MX",
+          "NL",
+          "NO",
+          "SA",
+          "SE",
+          "SG",
+          "US",
+          "ZA"
+        ],
+        [
+          "EE"
+        ]
+      ]
+    },
+    "average_K3": {
+      "silhouette": 0.4683,
+      "groups": [
+        [
+          "BR",
+          "CA",
+          "CN",
+          "DE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "IL",
+          "IN",
+          "IT",
+          "JP",
+          "KR",
+          "MX",
+          "NL",
+          "NO",
+          "SA",
+          "SE",
+          "SG",
+          "US",
+          "ZA"
+        ],
+        [
+          "EE"
+        ],
+        [
+          "IE"
+        ]
+      ]
+    },
+    "average_K4": {
+      "silhouette": 0.3183,
+      "groups": [
+        [
+          "BR",
+          "CA",
+          "CN",
+          "DE",
+          "ES",
+          "FI",
+          "FR",
+          "GB",
+          "IL",
+          "IN",
+          "IT",
+          "JP",
+          "KR",
+          "MX",
+          "NL",
+          "NO",
+          "SE",
+          "SG",
+          "US",
+          "ZA"
+        ],
+        [
+          "EE"
+        ],
+        [
+          "IE"
+        ],
+        [
+          "SA"
+        ]
+      ]
+    },
+    "average_K5": {
+      "silhouette": 0.2548,
+      "groups": [
+        [
+          "CN",
+          "FI",
+          "KR"
+        ],
+        [
+          "BR",
+          "CA",
+          "DE",
+          "ES",
+          "FR",
+          "GB",
+          "IL",
+          "IN",
+          "IT",
+          "JP",
+          "MX",
+          "NL",
+          "NO",
+          "SE",
+          "SG",
+          "US",
+          "ZA"
+        ],
+        [
+          "EE"
+        ],
+        [
+          "IE"
+        ],
+        [
+          "SA"
+        ]
+      ]
+    },
+    "average_K6": {
+      "silhouette": 0.3605,
+      "groups": [
+        [
+          "CN",
+          "FI",
+          "KR"
+        ],
+        [
+          "DE",
+          "GB",
+          "IL",
+          "IT",
+          "JP",
+          "NL",
+          "SG"
+        ],
+        [
+          "BR",
+          "CA",
+          "ES",
+          "FR",
+          "IN",
+          "MX",
+          "NO",
+          "SE",
+          "US",
+          "ZA"
+        ],
+        [
+          "EE"
+        ],
+        [
+          "IE"
+        ],
+        [
+          "SA"
+        ]
+      ]
+    }
+  },
+  "silhouette_draft_K2": {
+    "ward": {
+      "silhouette": 0.4827,
+      "groups": [
+        [
+          "CA",
+          "FI",
+          "IE",
+          "KR",
+          "SE",
+          "US"
+        ],
+        [
+          "BR",
+          "CN",
+          "DE",
+          "EE",
+          "ES",
+          "FR",
+          "GB",
+          "IL",
+          "IN",
+          "IT",
+          "JP",
+          "MX",
+          "NL",
+          "NO",
+          "SA",
+          "SG",
+          "ZA"
+        ]
+      ]
+    },
+    "average": {
+      "silhouette": 0.4827,
+      "groups": [
+        [
+          "CA",
+          "FI",
+          "IE",
+          "KR",
+          "SE",
+          "US"
+        ],
+        [
+          "BR",
+          "CN",
+          "DE",
+          "EE",
+          "ES",
+          "FR",
+          "GB",
+          "IL",
+          "IN",
+          "IT",
+          "JP",
+          "MX",
+          "NL",
+          "NO",
+          "SA",
+          "SG",
+          "ZA"
+        ]
+      ]
+    }
+  },
+  "A3_1_EE_excluded": {
+    "n": 22,
+    "any_KR_IE_minority_group": false,
+    "table": {
+      "ward_K2": {
+        "silhouette": 0.301,
+        "groups": [
+          [
+            "BR",
+            "CA",
+            "CN",
+            "ES",
+            "FI",
+            "FR",
+            "IE",
+            "IN",
+            "KR",
+            "MX",
+            "NO",
+            "SE",
+            "US",
+            "ZA"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SA",
+            "SG"
+          ]
+        ]
+      },
+      "ward_K3": {
+        "silhouette": 0.3122,
+        "groups": [
+          [
+            "BR",
+            "CA",
+            "CN",
+            "ES",
+            "FI",
+            "FR",
+            "IN",
+            "KR",
+            "MX",
+            "NO",
+            "SE",
+            "US",
+            "ZA"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SA",
+            "SG"
+          ],
+          [
+            "IE"
+          ]
+        ]
+      },
+      "ward_K4": {
+        "silhouette": 0.3801,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SA",
+            "SG"
+          ],
+          [
+            "BR",
+            "CA",
+            "ES",
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ]
+        ]
+      },
+      "ward_K5": {
+        "silhouette": 0.3769,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SG"
+          ],
+          [
+            "BR",
+            "CA",
+            "ES",
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      },
+      "ward_K6": {
+        "silhouette": 0.3911,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SG"
+          ],
+          [
+            "CA",
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "US"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "BR",
+            "ES",
+            "ZA"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      },
+      "average_K2": {
+        "silhouette": 0.4896,
+        "groups": [
+          [
+            "BR",
+            "CA",
+            "CN",
+            "DE",
+            "ES",
+            "FI",
+            "FR",
+            "GB",
+            "IL",
+            "IN",
+            "IT",
+            "JP",
+            "KR",
+            "MX",
+            "NL",
+            "NO",
+            "SA",
+            "SE",
+            "SG",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ]
+        ]
+      },
+      "average_K3": {
+        "silhouette": 0.3328,
+        "groups": [
+          [
+            "BR",
+            "CA",
+            "CN",
+            "DE",
+            "ES",
+            "FI",
+            "FR",
+            "GB",
+            "IL",
+            "IN",
+            "IT",
+            "JP",
+            "KR",
+            "MX",
+            "NL",
+            "NO",
+            "SE",
+            "SG",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      },
+      "average_K4": {
+        "silhouette": 0.2664,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "BR",
+            "CA",
+            "DE",
+            "ES",
+            "FR",
+            "GB",
+            "IL",
+            "IN",
+            "IT",
+            "JP",
+            "MX",
+            "NL",
+            "NO",
+            "SE",
+            "SG",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      },
+      "average_K5": {
+        "silhouette": 0.3769,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SG"
+          ],
+          [
+            "BR",
+            "CA",
+            "ES",
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      },
+      "average_K6": {
+        "silhouette": 0.3911,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SG"
+          ],
+          [
+            "CA",
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "US"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "BR",
+            "ES",
+            "ZA"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      }
+    }
+  },
+  "A3_2_floor100": {
+    "eligible": [
+      "KR",
+      "GB",
+      "SG",
+      "FI",
+      "US",
+      "CN",
+      "JP",
+      "DE",
+      "FR",
+      "IL",
+      "IN",
+      "NO",
+      "SE",
+      "NL",
+      "IE",
+      "ES",
+      "IT",
+      "SA",
+      "BR",
+      "MX",
+      "ZA"
+    ],
+    "any_KR_IE_minority_group": false,
+    "table": {
+      "ward_K2": {
+        "silhouette": 0.2914,
+        "groups": [
+          [
+            "BR",
+            "CN",
+            "ES",
+            "FI",
+            "FR",
+            "IE",
+            "IN",
+            "KR",
+            "MX",
+            "NO",
+            "SE",
+            "US",
+            "ZA"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SA",
+            "SG"
+          ]
+        ]
+      },
+      "ward_K3": {
+        "silhouette": 0.3005,
+        "groups": [
+          [
+            "BR",
+            "CN",
+            "ES",
+            "FI",
+            "FR",
+            "IN",
+            "KR",
+            "MX",
+            "NO",
+            "SE",
+            "US",
+            "ZA"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SA",
+            "SG"
+          ],
+          [
+            "IE"
+          ]
+        ]
+      },
+      "ward_K4": {
+        "silhouette": 0.3782,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SA",
+            "SG"
+          ],
+          [
+            "BR",
+            "ES",
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ]
+        ]
+      },
+      "ward_K5": {
+        "silhouette": 0.3888,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SA",
+            "SG"
+          ],
+          [
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "US"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "BR",
+            "ES",
+            "ZA"
+          ]
+        ]
+      },
+      "ward_K6": {
+        "silhouette": 0.4041,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SG"
+          ],
+          [
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "US"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "BR",
+            "ES",
+            "ZA"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      },
+      "average_K2": {
+        "silhouette": 0.4843,
+        "groups": [
+          [
+            "BR",
+            "CN",
+            "DE",
+            "ES",
+            "FI",
+            "FR",
+            "GB",
+            "IL",
+            "IN",
+            "IT",
+            "JP",
+            "KR",
+            "MX",
+            "NL",
+            "NO",
+            "SA",
+            "SE",
+            "SG",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ]
+        ]
+      },
+      "average_K3": {
+        "silhouette": 0.3203,
+        "groups": [
+          [
+            "BR",
+            "CN",
+            "DE",
+            "ES",
+            "FI",
+            "FR",
+            "GB",
+            "IL",
+            "IN",
+            "IT",
+            "JP",
+            "KR",
+            "MX",
+            "NL",
+            "NO",
+            "SE",
+            "SG",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      },
+      "average_K4": {
+        "silhouette": 0.2728,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "BR",
+            "DE",
+            "ES",
+            "FR",
+            "GB",
+            "IL",
+            "IN",
+            "IT",
+            "JP",
+            "MX",
+            "NL",
+            "NO",
+            "SE",
+            "SG",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      },
+      "average_K5": {
+        "silhouette": 0.3752,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SG"
+          ],
+          [
+            "BR",
+            "ES",
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "US",
+            "ZA"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      },
+      "average_K6": {
+        "silhouette": 0.3318,
+        "groups": [
+          [
+            "CN",
+            "FI",
+            "KR"
+          ],
+          [
+            "DE",
+            "GB",
+            "IL",
+            "IT",
+            "JP",
+            "NL",
+            "SG"
+          ],
+          [
+            "US"
+          ],
+          [
+            "BR",
+            "ES",
+            "FR",
+            "IN",
+            "MX",
+            "NO",
+            "SE",
+            "ZA"
+          ],
+          [
+            "IE"
+          ],
+          [
+            "SA"
+          ]
+        ]
+      }
+    }
+  },
+  "A3_3_mean_pairwise_hellinger": {
+    "oecd_draft": {
+      "n": 23,
+      "mean": 0.1865
+    },
+    "oecd_final": {
+      "n": 23,
+      "mean": 0.1444
+    },
+    "unesco_student": {
+      "n": 23,
+      "mean": 0.2556
+    },
+    "unesco_student_on_oecd_eligible": {
+      "n": 23,
+      "mean": 0.2556
+    },
+    "unesco_teacher": {
+      "n": 22,
+      "mean": 0.2035
+    },
+    "unesco_teacher_on_oecd_eligible": {
+      "n": 23,
+      "mean": 0.2057
+    }
+  },
+  "A3_3_reduction_pct": 22.6,
+  "A3_3_centroid_distances": {
+    "KR_draft": 0.246,
+    "IE_draft": 0.383,
+    "canonical_mean_to_centroid_draft": 0.089,
+    "canonical_max_to_centroid_draft": 0.232,
+    "KR_final": 0.122,
+    "IE_final": 0.227,
+    "canonical_mean_to_centroid_final": 0.091,
+    "canonical_max_to_centroid_final": 0.362
+  }
+}

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""figure_cross_framework.py — §4.5 main figure for the C&E manuscript.
+"""figure_cross_framework.py — Figure 1 (cross-framework replication) for the manuscript.
 
 Single PNG (4-panel composite) showing that the K = 2 partition {KR, IE}
 vs canonical replicates across three independent anchor frameworks:
@@ -69,6 +69,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--student-tag", default="v2",
                         help="student anchor matrix suffix (v2 default; v1 for sensitivity)")
+    parser.add_argument("--out", default=None, help="optional output PNG path")
     args = parser.parse_args()
 
     try:
@@ -89,7 +90,7 @@ def main() -> int:
          ALIGN_DIR / f"sprint1_25x12_pct_{args.student_tag}.csv"),
         ("teacher", "UNESCO teacher (5 anchors)",
          ALIGN_DIR / "sprint1_25x5_pct_teacher.csv"),
-        ("oecd", "OECD AILit (4 anchors)",
+        ("oecd", "OECD–EC draft, May 2025 (4 anchors)",
          ALIGN_DIR / "sprint1_25x4_pct_oecd.csv"),
     ]
 
@@ -248,7 +249,7 @@ def main() -> int:
     for j, (name, label_full, _) in enumerate(frameworks):
         short = {"student": "UNESCO\nstudent\n(12)",
                  "teacher": "UNESCO\nteacher\n(5)",
-                 "oecd": "OECD\nAILit\n(4)"}[name]
+                 "oecd": "OECD–EC\ndraft 2025\n(4)"}[name]
         ax_hm.text(j + 0.5, n_iso + 0.5, short,
                    ha="center", va="bottom", fontsize=10, fontweight="bold")
 
@@ -257,18 +258,18 @@ def main() -> int:
                ha="center", va="bottom", fontsize=10, fontweight="bold")
 
     ax_hm.set_xlim(-1.2, n_fw + 1.0)
-    ax_hm.set_ylim(-0.2, n_iso + 1.5)
+    ax_hm.set_ylim(-1.6, n_iso + 1.5)
     ax_hm.axis("off")
 
     # Legend
-    legend_y = -0.15
+    legend_y = -1.3
     legend_items = [
         ("#d62728", "Cluster 1 — deviating (≈ {KR, IE} centroid)"),
         ("white", "Cluster 2 — canonical"),
         (colour_low, "n/a — corpus size < 50"),
     ]
     for k, (c, txt) in enumerate(legend_items):
-        x = 0.05 + k * 0.32
+        x = 0.02 + k * 0.37
         ax_hm.add_patch(Rectangle((x * (n_fw + 1), legend_y), 0.4, 0.5,
                                    facecolor=c, edgecolor="#666", linewidth=0.5,
                                    transform=ax_hm.transData))
@@ -276,10 +277,10 @@ def main() -> int:
                    fontsize=9, va="center", transform=ax_hm.transData)
 
     # Big title for the figure
-    fig.suptitle("Cross-framework replication of the K = 2 cluster {KR, IE} (§4.5 main result)",
+    fig.suptitle("Cross-framework replication of the K = 2 cluster {KR, IE} across the three pre-specified anchor sets",
                  fontsize=14, fontweight="bold", y=0.985)
 
-    out_path = OUT_DIR / f"figure_cross_framework_{args.student_tag}.png"
+    out_path = Path(args.out) if args.out else OUT_DIR / f"figure_cross_framework_{args.student_tag}.png"
     fig.savefig(out_path, dpi=300, bbox_inches="tight")
     print(f"[out] {out_path}")
     return 0

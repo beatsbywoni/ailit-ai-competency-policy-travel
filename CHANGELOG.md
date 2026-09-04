@@ -1,5 +1,14 @@
 # CHANGELOG
 
+## 2026-09-04 (later) — pre-submission verification: anchor rule, corrected re-run, sanity checks
+
+- **Corrected** `anchors/oecd_ai_literacy_2026_final.csv`. The first version of the Shape AI anchor was a non-contiguous excerpt of the domain-opener paragraph (one sentence skipped) and, at ≈139 tokens, exceeded the encoder's 128-token default window, so the model had truncated it silently. The CSV now stores the complete verbatim opener paragraphs (`paragraph_full`) and an `anchor_sentence` defined by rule as the longest run of *initial* sentences that fits the 128-token window, resolved at run time with the model tokeniser: O01F sentences 1–4 of 5 (118 tokens), O02F 1–4 of 5 (114), O03F 1–3 of 3 (112), O04F 1–3 of 9 (96). Pre-specified anchor sets untouched; their token lengths (all ≤ 126) are printed by the run for the record.
+- **Changed** `scripts/06_oecd_final/run_oecd_final.py`: resolves anchors by the rule above and rewrites the CSV if needed; hashes the pre-specified draft outputs before/after (unchanged); labels the K = 2 comparison by minority cluster (the earlier Korea-keyed labelling read misleadingly when Korea sits in the majority).
+- **Added** `scripts/06_oecd_final/verify_oecd_final.py` → `data/clustering/oecd_final_verification.{md,json}`: independent recomputation of Table 3, Hellinger matrix and silhouettes from the pct files; Estonia-excluded and n ≥ 100 re-clusterings (K = 2–6, Ward and average); mean pairwise Hellinger distance under draft / final / UNESCO student / UNESCO teacher anchors; Korea and Ireland distances to the canonical centroid.
+- **Re-run outputs** (`*_oecd_final*`) regenerated with the corrected anchor: alignment 19,509 / 36,098 (54.0%; first version 19,423). K = 2 Ward partition still degenerate (Estonia singleton vs 22; silhouette 0.651). Shape AI cross-country SD 14.4 → 5.1 (sample SD); KR O4 43.4% → 9.5%; IE 69.0% → 25.3% (highest); mean pairwise Hellinger 0.186 → 0.144. With Estonia excluded or the floor raised to 100, no K recovers a Korea–Ireland group; Ireland alone is the only minority structure.
+- **Figures**: `figure_cross_framework.py` title and third-panel label now read "OECD–EC draft, May 2025 (4 anchors)" (no internal section number); `forest_plot_robustness.py` title reads "UNESCO Student anchors" and exports at 300 dpi.
+- `docs/manuscript.md` refreshed to the current anonymised version.
+
 ## 2026-09-04 — OECD–EC final-framework re-run (post-hoc, additive)
 
 - **Added** `anchors/oecd_ai_literacy_2026_final.csv`: the four domain-definition paragraphs of the OECD–EC *AI Literacy Framework* as published on 18 June 2026 (DOI 10.1787/65cd27d4-en, pp. 26/32/36/40; domains Engage with AI, Create with AI, Manage AI, Shape AI). The May 2025 review-draft anchors (`anchors/oecd_ai_literacy_2025.csv`) remain the pre-specified third anchor set and are unchanged.

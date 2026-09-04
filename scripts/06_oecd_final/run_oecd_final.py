@@ -68,9 +68,87 @@ TAG = "oecd_final"
 def load_anchors(path: Path) -> list[dict]:
     with path.open(newline="", encoding="utf-8") as f:
         return [
-            {"anchor_id": r["anchor_id"], "aspect": r["domain"], "sentence": r["anchor_sentence"]}
+            {"anchor_id": r["anchor_id"], "aspect": r["domain"], "sentence": r["anchor_sentence"],
+             "paragraph_full": r.get("paragraph_full", ""), "row": r}
             for r in csv.DictReader(f)
         ]
+
+
+def split_sentences(par: str) -> list[str]:
+    import re
+    return [s for s in re.split(r"(?<=[.])\s+(?=[A-Z])", par.strip()) if s]
+
+
+def n_tokens(model, text: str) -> int:
+    """Token count as the encoder sees it (incl. special tokens)."""
+    return len(model.tokenizer(text, add_special_tokens=True)["input_ids"])
+
+
+def resolve_final_anchors(model, anchors: list[dict], csv_path: Path) -> list[dict]:
+    """Final-framework anchor rule (pre-submission fix round, 2026-09-04):
+    anchor = the longest run of *initial* sentences of the verbatim domain-opener
+    paragraph that fits the encoder's window (model.max_seq_length, 128 tokens for
+    paraphrase-multilingual-mpnet-base-v2). Guarantees the anchor is contiguous,
+    verbatim, and entirely encoded (no silent truncation). Rewrites the CSV's
+    anchor_sentence / sentences_used columns if they differ from the rule."""
+    win = int(model.max_seq_length)
+    changed = False
+    print(f"[anchors] encoder window = {win} tokens; resolving final anchors by the initial-sentences rule")
+    for a in anchors:
+        full = a["paragraph_full"]
+        if not full:
+            print(f"  {a['anchor_id']}: no paragraph_full column — using anchor_sentence as is "
+                  f"({n_tokens(model, a['sentence'])} tokens)")
+            continue
+        ss = split_sentences(full)
+        k_fit = 0
+        for k in range(1, len(ss) + 1):
+            if n_tokens(model, " ".join(ss[:k])) <= win:
+                k_fit = k
+            else:
+                break
+        resolved = " ".join(ss[:k_fit])
+        nt = n_tokens(model, resolved)
+        nxt = n_tokens(model, " ".join(ss[:k_fit + 1])) if k_fit < len(ss) else None
+        flag = ""
+        if resolved != a["sentence"]:
+            flag = "  ** CSV updated **"
+            changed = True
+            a["sentence"] = resolved
+            a["row"]["anchor_sentence"] = resolved
+        a["row"]["sentences_used"] = f"1-{k_fit} of {len(ss)}"
+        print(f"  {a['anchor_id']}: sentences 1-{k_fit} of {len(ss)}, {nt} tokens"
+              + (f" (adding sentence {k_fit+1} would give {nxt})" if nxt else " (whole paragraph)") + flag)
+        assert nt <= win, f"{a['anchor_id']} exceeds the encoder window"
+    if changed:
+        fields = list(anchors[0]["row"].keys())
+        with csv_path.open("w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=fields)
+            w.writeheader()
+            for a in anchors:
+                w.writerow(a["row"])
+        print(f"[anchors] {csv_path.name} rewritten with the resolved anchor sentences")
+    return anchors
+
+
+def report_token_lengths(model, label: str, path: Path) -> None:
+    """Informational: token length of every pre-specified anchor vs the window."""
+    win = int(model.max_seq_length)
+    with path.open(newline="", encoding="utf-8") as f:
+        for r in csv.DictReader(f):
+            s = r.get("anchor_sentence") or r.get("sentence")
+            nt = n_tokens(model, s)
+            print(f"  {label:<16} {r['anchor_id']:<12} {len(s.split()):>4} words {nt:>4} tokens"
+                  + ("  ** EXCEEDS WINDOW — encoder truncates **" if nt > win else ""))
+
+
+def sha256_of(paths: list[Path]) -> dict[str, str]:
+    import hashlib
+    out = {}
+    for p in paths:
+        if p.exists():
+            out[p.name] = hashlib.sha256(p.read_bytes()).hexdigest()[:16]
+    return out
 
 
 def load_corpus() -> dict[str, list[dict]]:
@@ -109,10 +187,28 @@ def main() -> int:
     MATRIX_DIR.mkdir(parents=True, exist_ok=True)
     CLUSTER_DIR.mkdir(parents=True, exist_ok=True)
 
+    # ---------------------------------------------------------------- draft outputs: hash before
+    draft_files = [MATRIX_DIR / "sprint1_25x4_counts_oecd.csv", MATRIX_DIR / "sprint1_25x4_pct_oecd.csv",
+                   MATRIX_DIR / "sprint1_by_doc_counts_oecd.csv", MATRIX_DIR / "sprint1_by_doc_pct_oecd.csv",
+                   CLUSTER_DIR / "hellinger_dist_oecd.csv", CLUSTER_DIR / "clusters_oecd_ward_K2.csv",
+                   CLUSTER_DIR / "clusters_oecd_average_K2.csv"]
+    h_before = sha256_of(draft_files)
+    print("[hash   ] draft (May 2025) outputs before run: " + ", ".join(f"{k}={v}" for k, v in h_before.items()))
+
+    # ---------------------------------------------------------------- model
+    print(f"[model  ] {MODEL_NAME}")
+    model = SentenceTransformer(MODEL_NAME)
+    print(f"[model  ] max_seq_length = {model.max_seq_length} tokens (pipeline default; unchanged)")
+
     # ---------------------------------------------------------------- anchors
     anchors = load_anchors(ANCHOR_CSV)
+    anchors = resolve_final_anchors(model, anchors, ANCHOR_CSV)
     anchor_ids = [a["anchor_id"] for a in anchors]
     print(f"[anchors] {len(anchors)} final OECD–EC anchors: {anchor_ids}")
+    print("[anchors] token lengths of the pre-specified anchor sets (informational; not modified):")
+    report_token_lengths(model, "OECD draft", DRAFT_ANCHOR_CSV)
+    report_token_lengths(model, "UNESCO student", REPO / "anchors" / "unesco_ai_student_2024.csv")
+    report_token_lengths(model, "UNESCO teacher", REPO / "anchors" / "unesco_ai_teacher_2024.csv")
 
     # ---------------------------------------------------------------- corpus
     corpus = load_corpus()
@@ -120,8 +216,6 @@ def main() -> int:
     print(f"[corpus ] {len(corpus)} documents, {n_sents:,} sentences (frozen May 2026 harvest)")
 
     # ---------------------------------------------------------------- embed
-    print(f"[model  ] {MODEL_NAME}")
-    model = SentenceTransformer(MODEL_NAME)
     A = model.encode([a["sentence"] for a in anchors], normalize_embeddings=True,
                      convert_to_numpy=True, show_progress_bar=False)
 
@@ -247,11 +341,14 @@ def main() -> int:
         with draft_k2.open(newline="", encoding="utf-8") as f:
             for r in csv.DictReader(f): draft[r["country"]] = int(r["cluster"])
     final_lab = labels_by[("ward", 2)]
-    # Orient cluster IDs so that KR's cluster is "1" (deviating) in both
+    # Orient cluster IDs so that "1" = the MINORITY cluster (the deviating group)
+    # and "2" = the majority. (Earlier version keyed on KR's cluster, which is
+    # misleading when KR sits in the majority — fixed 2026-09-04.)
     def orient(lab_map: dict[str, int]) -> dict[str, int]:
-        kr = lab_map.get("KR")
-        if kr is None: return lab_map
-        return {c: (1 if l == kr else 2) for c, l in lab_map.items()}
+        if not lab_map: return lab_map
+        from collections import Counter
+        minority = min(Counter(lab_map.values()).items(), key=lambda kv: (kv[1], kv[0]))[0]
+        return {c: (1 if l == minority else 2) for c, l in lab_map.items()}
     final_map = orient(dict(zip(countries, [int(x) for x in final_lab])))
     draft_map = orient(draft)
     cmp_csv = CLUSTER_DIR / "oecd_draft_vs_final_comparison.csv"
@@ -260,15 +357,27 @@ def main() -> int:
         for c in load_country_order():
             d = draft_map.get(c, ""); fn = final_map.get(c, "")
             w.writerow([c, d, fn, "YES" if (d != "" and fn != "" and d != fn) else ""])
-    print(f"[out    ] {cmp_csv}")
+    print(f"[out    ] {cmp_csv}  (1 = minority/deviating cluster, 2 = majority)")
     print()
     dev_draft = sorted(c for c, l in draft_map.items() if l == 1)
     dev_final = sorted(c for c, l in final_map.items() if l == 1)
-    print(f"Deviating set — DRAFT (May 2025):  {dev_draft}")
-    print(f"Deviating set — FINAL (June 2026): {dev_final}")
-    print(f"KR and IE both deviating under FINAL: {('KR' in dev_final) and ('IE' in dev_final)}")
+    print(f"Minority (deviating) cluster — DRAFT (May 2025):  {dev_draft}")
+    print(f"Minority (deviating) cluster — FINAL (June 2026): {dev_final}")
+    print(f"KR and IE both in the FINAL minority cluster: {('KR' in dev_final) and ('IE' in dev_final)}")
     print(f"Added:   {sorted(set(dev_final) - set(dev_draft))}")
     print(f"Dropped: {sorted(set(dev_draft) - set(dev_final))}")
+
+    # ---------------------------------------------------------------- draft outputs: hash after
+    h_after = sha256_of(draft_files)
+    same = all(h_before.get(k) == h_after.get(k) for k in h_before)
+    print()
+    print(f"[hash   ] draft (May 2025) outputs unchanged by this run: {same}")
+    if not same:
+        print("[hash   ] ** WARNING: a draft output file changed — investigate before reporting **")
+
+    # ---------------------------------------------------------------- verification + extension
+    print()
+    print("[next   ] run: python scripts/06_oecd_final/verify_oecd_final.py   (Table 3, silhouettes, A3 checks)")
     return 0
 
 
